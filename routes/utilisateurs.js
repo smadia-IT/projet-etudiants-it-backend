@@ -137,12 +137,12 @@ router.get("/:id", authMiddleware, async (req, res) => {
         }
 
         // Statut d'amitié
-        const amitieResult = await pool.query(`
+               const amitieResult = await pool.query(`
             SELECT id, statut, user_id_1 
             FROM amities 
             WHERE (user_id_1 = $1 AND user_id_2 = $2) 
                OR (user_id_1 = $2 AND user_id_2 = $1)
-        `, [monId, id, id, monId]);
+        `, [monId, id]);
 
         const amitie = amitieResult.rows[0];
 

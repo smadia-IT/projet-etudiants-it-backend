@@ -164,8 +164,7 @@ router.get("/", authMiddleware, async (req, res) => {
             )
             WHERE a.statut = 'acceptee'
             ORDER BY u.username ASC
-        `, [monId, monId]);
-
+       `, [monId]);
         res.json({ 
             success: true, 
             count: amisResult.rowCount, 
