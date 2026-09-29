@@ -1,0 +1,3680 @@
+[
+  {
+    "mot": "Algorithme",
+    "definition": "Suite finie d'instructions qui permet de résoudre un problème.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Variable",
+    "definition": "Espace mémoire nommé qui stocke une valeur pouvant changer.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Pare-feu",
+    "definition": "Dispositif qui filtre le trafic réseau entrant et sortant.",
+    "domaine": "Cybersécurité",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Routeur",
+    "definition": "Équipement qui dirige les données entre plusieurs réseaux.",
+    "domaine": "Réseau",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Base de données",
+    "definition": "Ensemble organisé d'informations structurées et accessibles.",
+    "domaine": "Base de données",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Commutateur",
+    "definition": "Boîtier permettant de relier plusieurs appareils dans un réseau local.",
+    "domaine": "Réseau",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Boucle",
+    "definition": "Structure qui répète des instructions tant qu'une condition est vraie.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Fonction",
+    "definition": "Bloc de code réutilisable qui effectue une tâche précise.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Tableau",
+    "definition": "Structure de données qui stocke plusieurs valeurs dans une seule variable.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Objet",
+    "definition": "Structure qui regroupe des données et des fonctions liées.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "IP",
+    "definition": "Adresse utilisée pour identifier un appareil ou une interface sur un réseau.",
+    "domaine": "Réseau",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "DNS",
+    "definition": "Système qui traduit les noms de domaine en adresses IP.",
+    "domaine": "Réseau",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "HTTP",
+    "definition": "Protocole de communication utilisé notamment pour le Web.",
+    "domaine": "Réseau",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "HTTPS",
+    "definition": "Version sécurisée de HTTP utilisant le chiffrement des communications.",
+    "domaine": "Réseau",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "LAN",
+    "definition": "Réseau local couvrant une zone limitée comme une maison ou un bureau.",
+    "domaine": "Réseau",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "VPN",
+    "definition": "Réseau privé virtuel permettant notamment de sécuriser une connexion réseau.",
+    "domaine": "Réseau",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Firewall",
+    "definition": "Terme anglais désignant un pare-feu.",
+    "domaine": "Cybersécurité",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Phishing",
+    "definition": "Technique d'arnaque visant à tromper une personne pour obtenir des informations.",
+    "domaine": "Cybersécurité",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Virus",
+    "definition": "Programme malveillant capable de se propager en infectant d'autres fichiers.",
+    "domaine": "Cybersécurité",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Authentification",
+    "definition": "Processus permettant de vérifier l'identité d'un utilisateur.",
+    "domaine": "Cybersécurité",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "SQL",
+    "definition": "Langage utilisé pour interroger et manipuler des bases de données.",
+    "domaine": "Base de données",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Table",
+    "definition": "Structure d'une base de données organisée en lignes et colonnes.",
+    "domaine": "Base de données",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "API",
+    "definition": "Interface permettant à différents programmes de communiquer entre eux.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Framework",
+    "definition": "Ensemble d'outils et de bibliothèques facilitant le développement d'applications.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Processeur",
+    "definition": "Composant qui exécute les instructions et effectue les calculs d'un ordinateur.",
+    "domaine": "Matériel",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Mémoire vive",
+    "definition": "Mémoire temporaire utilisée par l'ordinateur pour stocker les données en cours d'utilisation.",
+    "domaine": "Matériel",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Disque dur",
+    "definition": "Support de stockage permettant de conserver des données.",
+    "domaine": "Matériel",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "SSD",
+    "definition": "Support de stockage utilisant de la mémoire électronique pour conserver les données.",
+    "domaine": "Matériel",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Carte mère",
+    "definition": "Carte principale qui relie les différents composants d'un ordinateur.",
+    "domaine": "Matériel",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Carte graphique",
+    "definition": "Composant chargé notamment de produire et d'afficher les images.",
+    "domaine": "Matériel",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Système d'exploitation",
+    "definition": "Logiciel principal qui gère les ressources d'un ordinateur et permet d'exécuter des programmes.",
+    "domaine": "Système",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Linux",
+    "definition": "Famille de systèmes d'exploitation libres et open source.",
+    "domaine": "Système",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Windows",
+    "definition": "Système d'exploitation développé par Microsoft.",
+    "domaine": "Système",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Navigateur",
+    "definition": "Logiciel permettant de consulter des sites et applications Web.",
+    "domaine": "Web",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Serveur",
+    "definition": "Ordinateur ou programme fournissant des services ou des ressources à d'autres appareils.",
+    "domaine": "Réseau",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Client",
+    "definition": "Programme ou appareil qui utilise un service fourni par un serveur.",
+    "domaine": "Réseau",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Adresse MAC",
+    "definition": "Identifiant matériel associé à une interface réseau.",
+    "domaine": "Réseau",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Wi-Fi",
+    "definition": "Technologie permettant de connecter des appareils à un réseau sans fil.",
+    "domaine": "Réseau",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Cloud",
+    "definition": "Ensemble de services informatiques accessibles à distance via Internet.",
+    "domaine": "Cloud",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Sauvegarde",
+    "definition": "Copie de données conservée afin de pouvoir les restaurer.",
+    "domaine": "Système",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Fichier",
+    "definition": "Ensemble de données enregistré sous un nom sur un support de stockage.",
+    "domaine": "Système",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Dossier",
+    "definition": "Conteneur permettant d'organiser des fichiers et d'autres dossiers.",
+    "domaine": "Système",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Logiciel",
+    "definition": "Programme ou ensemble de programmes permettant d'effectuer des tâches.",
+    "domaine": "Informatique",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Code source",
+    "definition": "Ensemble des instructions écrites par un développeur pour créer un programme.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Débogage",
+    "definition": "Processus consistant à rechercher et corriger les erreurs d'un programme.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Bibliothèque",
+    "definition": "Ensemble de code réutilisable permettant d'ajouter des fonctionnalités à un programme.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Git",
+    "definition": "Système de gestion de versions permettant de suivre les modifications d'un projet.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "HTML",
+    "definition": "Langage utilisé pour structurer le contenu d'une page Web.",
+    "domaine": "Web",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "CSS",
+    "definition": "Langage utilisé pour définir la présentation et le style d'une page Web.",
+    "domaine": "Web",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "JavaScript",
+    "definition": "Langage de programmation utilisé notamment pour rendre les pages Web interactives.",
+    "domaine": "Web",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Domaine",
+    "definition": "Nom lisible utilisé pour accéder à un site Web sur Internet.",
+    "domaine": "Web",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Cookie",
+    "definition": "Petite donnée enregistrée par un site Web dans le navigateur.",
+    "domaine": "Web",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Octet",
+    "definition": "Unité d'information composée de 8 bits.",
+    "domaine": "Informatique",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Bit",
+    "definition": "Plus petite unité d'information informatique pouvant prendre la valeur 0 ou 1.",
+    "domaine": "Informatique",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Kilooctet",
+    "definition": "Unité de mesure utilisée pour exprimer une quantité de données.",
+    "domaine": "Informatique",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Mégaoctet",
+    "definition": "Unité de mesure correspondant à une quantité de données supérieure au kilooctet.",
+    "domaine": "Informatique",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Gigaoctet",
+    "definition": "Unité de mesure couramment utilisée pour exprimer une capacité de stockage.",
+    "domaine": "Informatique",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Téraoctet",
+    "definition": "Unité de mesure correspondant à une très grande quantité de données.",
+    "domaine": "Informatique",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Entrée",
+    "definition": "Donnée fournie à un programme ou à un système informatique.",
+    "domaine": "Informatique",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Sortie",
+    "definition": "Résultat produit par un programme ou un système informatique.",
+    "domaine": "Informatique",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Périphérique",
+    "definition": "Appareil connecté à un ordinateur pour fournir ou recevoir des données.",
+    "domaine": "Matériel",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Clavier",
+    "definition": "Périphérique permettant de saisir du texte et des commandes.",
+    "domaine": "Matériel",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Souris",
+    "definition": "Périphérique permettant de déplacer le pointeur et d'interagir avec une interface.",
+    "domaine": "Matériel",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Écran",
+    "definition": "Périphérique permettant d'afficher les informations produites par un ordinateur.",
+    "domaine": "Matériel",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Imprimante",
+    "definition": "Périphérique permettant de produire une copie physique d'un document numérique.",
+    "domaine": "Matériel",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Scanner",
+    "definition": "Appareil permettant de convertir un document physique en fichier numérique.",
+    "domaine": "Matériel",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Webcam",
+    "definition": "Caméra permettant de capturer des images ou vidéos sur un ordinateur.",
+    "domaine": "Matériel",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Microphone",
+    "definition": "Périphérique transformant les sons en données pouvant être traitées par un ordinateur.",
+    "domaine": "Matériel",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Haut-parleur",
+    "definition": "Périphérique permettant de restituer des sons produits par un ordinateur.",
+    "domaine": "Matériel",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "USB",
+    "definition": "Norme permettant notamment de connecter des périphériques et de transférer des données.",
+    "domaine": "Matériel",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Bluetooth",
+    "definition": "Technologie permettant une communication sans fil à courte distance entre appareils.",
+    "domaine": "Réseau",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Ethernet",
+    "definition": "Technologie permettant de connecter des appareils à un réseau avec un câble.",
+    "domaine": "Réseau",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Modem",
+    "definition": "Équipement permettant notamment d'établir une connexion avec un fournisseur d'accès à Internet.",
+    "domaine": "Réseau",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Internet",
+    "definition": "Réseau mondial reliant de nombreux réseaux et appareils.",
+    "domaine": "Réseau",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "URL",
+    "definition": "Adresse permettant d'accéder à une ressource sur Internet.",
+    "domaine": "Web",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "WWW",
+    "definition": "Système de pages et de ressources accessibles via Internet.",
+    "domaine": "Web",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Page web",
+    "definition": "Document accessible dans un navigateur et généralement identifié par une URL.",
+    "domaine": "Web",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Site web",
+    "definition": "Ensemble de pages Web accessibles sous un même domaine.",
+    "domaine": "Web",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Responsive",
+    "definition": "Capacité d'une interface à s'adapter à différentes tailles d'écran.",
+    "domaine": "Web",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Formulaire",
+    "definition": "Interface permettant à un utilisateur de saisir et d'envoyer des informations.",
+    "domaine": "Web",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Lien hypertexte",
+    "definition": "Élément permettant d'accéder à une autre ressource en cliquant dessus.",
+    "domaine": "Web",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Session",
+    "definition": "Période pendant laquelle un utilisateur interagit avec un service informatique.",
+    "domaine": "Web",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Cache",
+    "definition": "Espace de stockage temporaire utilisé pour accélérer l'accès à certaines données.",
+    "domaine": "Informatique",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Extension",
+    "definition": "Petit module qui ajoute des fonctionnalités à un logiciel ou un navigateur.",
+    "domaine": "Logiciel",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Application",
+    "definition": "Programme conçu pour réaliser une ou plusieurs tâches spécifiques.",
+    "domaine": "Logiciel",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Pilote",
+    "definition": "Logiciel permettant au système d'exploitation de communiquer avec un périphérique.",
+    "domaine": "Système",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Mise à jour",
+    "definition": "Modification d'un logiciel destinée notamment à ajouter des fonctions ou corriger des problèmes.",
+    "domaine": "Logiciel",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Installation",
+    "definition": "Processus permettant de mettre un logiciel ou un composant en place sur un système.",
+    "domaine": "Système",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Désinstallation",
+    "definition": "Processus permettant de supprimer un logiciel d'un système.",
+    "domaine": "Système",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Processus",
+    "definition": "Programme en cours d'exécution sur un système informatique.",
+    "domaine": "Système",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Tâche",
+    "definition": "Opération exécutée par un système ou un programme.",
+    "domaine": "Système",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Terminal",
+    "definition": "Interface permettant d'interagir avec un ordinateur à l'aide de commandes textuelles.",
+    "domaine": "Système",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Commande",
+    "definition": "Instruction donnée à un système informatique pour effectuer une action.",
+    "domaine": "Système",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Invite de commande",
+    "definition": "Interface permettant d'exécuter des commandes textuelles sur un ordinateur.",
+    "domaine": "Système",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Chemin",
+    "definition": "Adresse indiquant l'emplacement d'un fichier ou d'un dossier dans un système.",
+    "domaine": "Système",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Administrateur",
+    "definition": "Utilisateur disposant de droits élevés permettant de gérer un système.",
+    "domaine": "Système",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Compte utilisateur",
+    "definition": "Ensemble d'informations permettant à une personne d'accéder à un système ou un service.",
+    "domaine": "Système",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Mot de passe",
+    "definition": "Secret utilisé pour protéger l'accès à un compte ou à une ressource.",
+    "domaine": "Cybersécurité",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Identifiant",
+    "definition": "Information utilisée pour identifier un utilisateur auprès d'un service.",
+    "domaine": "Cybersécurité",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Double authentification",
+    "definition": "Méthode de sécurité demandant deux éléments pour vérifier l'identité d'un utilisateur.",
+    "domaine": "Cybersécurité",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Antivirus",
+    "definition": "Logiciel conçu pour détecter et traiter certains programmes malveillants.",
+    "domaine": "Cybersécurité",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Malware",
+    "definition": "Terme général désignant un logiciel conçu pour nuire ou effectuer des actions indésirables.",
+    "domaine": "Cybersécurité",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Cheval de Troie",
+    "definition": "Programme malveillant qui se présente comme un logiciel légitime.",
+    "domaine": "Cybersécurité",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Spyware",
+    "definition": "Logiciel conçu pour collecter des informations sur un utilisateur sans son consentement.",
+    "domaine": "Cybersécurité",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Adware",
+    "definition": "Logiciel qui affiche ou facilite l'affichage de publicités, parfois de manière indésirable.",
+    "domaine": "Cybersécurité",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "JSON",
+    "definition": "Format texte couramment utilisé pour représenter et échanger des données structurées.",
+    "domaine": "Web",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "XML",
+    "definition": "Format de données utilisant des balises pour structurer et échanger des informations.",
+    "domaine": "Web",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Python",
+    "definition": "Langage de programmation utilisé dans de nombreux domaines.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Java",
+    "definition": "Langage de programmation utilisé notamment pour développer des applications et services.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "C",
+    "definition": "Langage de programmation généraliste largement utilisé notamment pour les systèmes.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "C++",
+    "definition": "Langage de programmation permettant notamment de développer des logiciels performants.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "PHP",
+    "definition": "Langage de programmation particulièrement utilisé pour développer des applications Web côté serveur.",
+    "domaine": "Web",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "TypeScript",
+    "definition": "Langage basé sur JavaScript qui ajoute notamment un système de types.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Classe",
+    "definition": "Modèle permettant de définir la structure et le comportement d'objets en programmation.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Attribut",
+    "definition": "Donnée associée à un objet ou à une structure dans un programme.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Méthode",
+    "definition": "Fonction associée à une classe ou à un objet.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Condition",
+    "definition": "Instruction permettant d'exécuter différentes actions selon qu'une expression est vraie ou fausse.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Opérateur",
+    "definition": "Symbole ou mot utilisé pour effectuer une opération sur des valeurs.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Booléen",
+    "definition": "Type de donnée pouvant prendre deux valeurs, généralement vrai ou faux.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Chaîne de caractères",
+    "definition": "Suite de caractères utilisée pour représenter du texte dans un programme.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Entier",
+    "definition": "Type de donnée représentant un nombre sans partie décimale.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Développeur",
+    "definition": "Personne qui conçoit, écrit et maintient des logiciels.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "IDE",
+    "definition": "Environnement logiciel regroupant des outils pour développer des programmes.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Open source",
+    "definition": "Logiciel dont le code source est disponible selon les conditions de sa licence.",
+    "domaine": "Logiciel",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Licence logicielle",
+    "definition": "Ensemble de règles définissant les conditions d'utilisation et de distribution d'un logiciel.",
+    "domaine": "Logiciel",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Version",
+    "definition": "État identifié d'un logiciel ou d'un projet à un moment donné.",
+    "domaine": "Logiciel",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Bug",
+    "definition": "Erreur ou comportement inattendu dans un logiciel.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Erreur système",
+    "definition": "Problème empêchant un système ou un programme de fonctionner normalement.",
+    "domaine": "Système",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Redémarrage",
+    "definition": "Action consistant à arrêter puis relancer un système informatique.",
+    "domaine": "Système",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Machine virtuelle",
+    "definition": "Ordinateur logiciel fonctionnant dans un environnement informatique physique.",
+    "domaine": "Système",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "API REST",
+    "definition": "Interface permettant à des applications de communiquer à travers des requêtes HTTP selon des principes REST.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Bibliothèque logicielle",
+    "definition": "Ensemble de fonctionnalités programmées pouvant être réutilisées dans différents projets.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Dépendance",
+    "definition": "Logiciel ou composant dont un programme a besoin pour fonctionner.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Compilation",
+    "definition": "Processus qui transforme du code source en code exécutable ou en une autre forme de code.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Compilation croisée",
+    "definition": "Processus permettant de compiler un programme pour une plateforme différente de celle utilisée pour la compilation.",
+    "domaine": "Programmation",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Commutateur réseau",
+    "definition": "Équipement réseau qui transmet les données entre plusieurs appareils d'un réseau local.",
+    "domaine": "Réseau",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Port réseau",
+    "definition": "Numéro permettant d'identifier un service ou une application sur un réseau.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Protocole",
+    "definition": "Ensemble de règles permettant à des appareils ou programmes de communiquer.",
+    "domaine": "Réseau",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Sous-réseau",
+    "definition": "Subdivision logique d'un réseau informatique.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "IPv4",
+    "definition": "Version du protocole IP utilisant des adresses de 32 bits.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "IPv6",
+    "definition": "Version du protocole IP utilisant des adresses de 128 bits.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "DHCP",
+    "definition": "Service qui attribue automatiquement des paramètres réseau aux appareils.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "TCP",
+    "definition": "Protocole assurant une transmission fiable et ordonnée des données.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "UDP",
+    "definition": "Protocole permettant d'envoyer des données sans garantir leur livraison.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "FTP",
+    "definition": "Protocole utilisé pour transférer des fichiers entre ordinateurs.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "SSH",
+    "definition": "Protocole permettant d'accéder de manière sécurisée à un ordinateur distant.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Ping",
+    "definition": "Outil permettant notamment de vérifier l'accessibilité d'un appareil sur un réseau.",
+    "domaine": "Réseau",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Paquet",
+    "definition": "Unité de données utilisée pour transporter des informations sur un réseau.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Bande passante",
+    "definition": "Quantité maximale de données pouvant être transmise pendant une période donnée.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Latence",
+    "definition": "Temps nécessaire pour qu'une donnée voyage d'un point à un autre.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Proxy",
+    "definition": "Serveur intermédiaire entre un utilisateur et une ressource réseau.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Intranet",
+    "definition": "Réseau privé utilisé au sein d'une organisation.",
+    "domaine": "Réseau",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Serveur web",
+    "definition": "Serveur qui fournit des pages et ressources Web aux clients.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Front-end",
+    "definition": "Partie d'une application visible et utilisée directement par l'utilisateur.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Back-end",
+    "definition": "Partie d'une application fonctionnant côté serveur et gérant notamment la logique et les données.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Permissions",
+    "definition": "Droits accordés à un utilisateur ou à un programme pour effectuer certaines actions.",
+    "domaine": "Système",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Virtualisation",
+    "definition": "Technique permettant de créer des environnements informatiques virtuels sur une machine physique.",
+    "domaine": "Système",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Conteneur",
+    "definition": "Environnement isolé permettant d'exécuter une application avec ses dépendances.",
+    "domaine": "Cloud",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Docker",
+    "definition": "Plateforme permettant notamment de créer et exécuter des applications dans des conteneurs.",
+    "domaine": "Cloud",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Dépôt",
+    "definition": "Espace où sont stockés et gérés les fichiers et l'historique d'un projet.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "SGBD",
+    "definition": "Logiciel permettant de créer, gérer et utiliser des bases de données.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Enregistrement",
+    "definition": "Ensemble de valeurs représentant une donnée complète dans une base de données.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Champ",
+    "definition": "Élément représentant une information particulière dans une structure de données.",
+    "domaine": "Base de données",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Clé étrangère",
+    "definition": "Champ permettant d'établir une relation entre des tables d'une base de données.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Relation",
+    "definition": "Lien logique entre des données ou des tables dans une base de données.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "SQL SELECT",
+    "definition": "Commande SQL utilisée pour récupérer des données dans une base de données.",
+    "domaine": "Base de données",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "SQL INSERT",
+    "definition": "Commande SQL utilisée pour ajouter des données dans une table.",
+    "domaine": "Base de données",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "SQL UPDATE",
+    "definition": "Commande SQL utilisée pour modifier des données existantes.",
+    "domaine": "Base de données",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "SQL DELETE",
+    "definition": "Commande SQL utilisée pour supprimer des données.",
+    "domaine": "Base de données",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Normalisation",
+    "definition": "Méthode d'organisation des données destinée notamment à réduire les répétitions dans une base de données.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Injection SQL",
+    "definition": "Vulnérabilité permettant de manipuler une requête SQL par l'intermédiaire de données contrôlées par un utilisateur.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Hachage",
+    "definition": "Transformation d'une donnée en une valeur utilisée notamment pour vérifier son intégrité.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Certificat numérique",
+    "definition": "Document électronique permettant notamment d'associer une identité à une clé cryptographique.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Clé de chiffrement",
+    "definition": "Information utilisée pour chiffrer ou déchiffrer des données.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Empreinte numérique",
+    "definition": "Valeur produite à partir de données et utilisée notamment pour vérifier leur intégrité.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Ingénierie sociale",
+    "definition": "Techniques visant à manipuler des personnes pour obtenir des informations ou provoquer une action.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Chiffrement symétrique",
+    "definition": "Méthode de chiffrement utilisant la même clé pour chiffrer et déchiffrer.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Chiffrement asymétrique",
+    "definition": "Méthode utilisant une paire de clés, généralement une clé publique et une clé privée.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Botnet",
+    "definition": "Ensemble d'appareils infectés pouvant être contrôlés à distance.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Vulnérabilité",
+    "definition": "Faiblesse d'un système pouvant être exploitée pour compromettre sa sécurité.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Exploit",
+    "definition": "Technique ou programme utilisant une vulnérabilité pour provoquer une action non prévue.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Architecture réseau",
+    "definition": "Organisation des équipements, protocoles et connexions constituant un réseau informatique.",
+    "domaine": "Réseau",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Sécurité réseau",
+    "definition": "Ensemble des techniques et mesures visant à protéger les réseaux et les données qui y circulent.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Compilateur",
+    "definition": "Programme qui traduit du code source en un langage exécutable par une machine.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Interpréteur",
+    "definition": "Programme qui exécute du code source directement ou étape par étape.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Pseudocode",
+    "definition": "Description structurée d'un algorithme utilisant un langage proche du langage naturel.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Récursivité",
+    "definition": "Technique dans laquelle une fonction s'appelle elle-même pour résoudre un problème.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Pile",
+    "definition": "Structure de données dans laquelle le dernier élément ajouté est généralement le premier retiré.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "File",
+    "definition": "Structure de données dans laquelle le premier élément ajouté est généralement le premier retiré.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Pointeur",
+    "definition": "Variable qui contient l'adresse mémoire d'une autre donnée.",
+    "domaine": "Programmation",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Référence",
+    "definition": "Mécanisme permettant d'accéder à une donnée ou à un objet existant.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Héritage",
+    "definition": "Mécanisme permettant à une classe de récupérer des caractéristiques d'une autre classe.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Polymorphisme",
+    "definition": "Principe permettant à différents objets de répondre à une même interface de différentes manières.",
+    "domaine": "Programmation",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Encapsulation",
+    "definition": "Principe consistant à regrouper les données et les opérations associées tout en contrôlant leur accès.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Abstraction",
+    "definition": "Principe consistant à cacher les détails complexes pour ne présenter que les éléments importants.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Complexité algorithmique",
+    "definition": "Mesure des ressources nécessaires à l'exécution d'un algorithme en fonction de la taille des données.",
+    "domaine": "Programmation",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Big O",
+    "definition": "Notation utilisée pour décrire la croissance de la complexité d'un algorithme.",
+    "domaine": "Programmation",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Arbre binaire",
+    "definition": "Structure de données organisée sous forme de nœuds pouvant avoir jusqu'à deux enfants.",
+    "domaine": "Programmation",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Graphe",
+    "definition": "Structure composée de sommets reliés entre eux par des arêtes.",
+    "domaine": "Programmation",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "GitHub",
+    "definition": "Plateforme permettant notamment d'héberger et de collaborer sur des projets utilisant Git.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Commit",
+    "definition": "Enregistrement d'un ensemble de modifications dans l'historique d'un dépôt Git.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Branche",
+    "definition": "Version indépendante d'une ligne de développement dans un système de gestion de versions.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Merge",
+    "definition": "Opération permettant de réunir les modifications provenant de différentes branches.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Conflit Git",
+    "definition": "Situation dans laquelle Git ne peut pas combiner automatiquement certaines modifications.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Pull Request",
+    "definition": "Demande permettant de proposer l'intégration de modifications dans une autre branche.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "CI/CD",
+    "definition": "Pratiques permettant notamment d'automatiser l'intégration, les tests et le déploiement des logiciels.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Déploiement",
+    "definition": "Processus consistant à rendre une application disponible dans un environnement d'exécution.",
+    "domaine": "DevOps",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Pipeline",
+    "definition": "Suite automatisée d'étapes permettant de traiter ou déployer un logiciel.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Test unitaire",
+    "definition": "Test qui vérifie le fonctionnement d'une petite partie isolée d'un programme.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Test d'intégration",
+    "definition": "Test permettant de vérifier que plusieurs composants fonctionnent correctement ensemble.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Test de charge",
+    "definition": "Test permettant d'observer le comportement d'un système sous une certaine quantité de demandes.",
+    "domaine": "Informatique",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Architecture logicielle",
+    "definition": "Organisation générale des composants d'un logiciel et de leurs interactions.",
+    "domaine": "Programmation",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Microservice",
+    "definition": "Petit service logiciel indépendant réalisant une fonction spécifique d'une application.",
+    "domaine": "Architecture",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Monolithe",
+    "definition": "Architecture dans laquelle les principales fonctionnalités d'une application sont regroupées dans un même logiciel.",
+    "domaine": "Architecture",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Load Balancer",
+    "definition": "Système qui répartit les requêtes entre plusieurs serveurs.",
+    "domaine": "Réseau",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "NAT",
+    "definition": "Technique permettant notamment de traduire des adresses IP entre différents réseaux.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "VLAN",
+    "definition": "Réseau local virtuel permettant de séparer logiquement un réseau physique.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "BGP",
+    "definition": "Protocole utilisé pour échanger des informations de routage entre grands réseaux sur Internet.",
+    "domaine": "Réseau",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "OSPF",
+    "definition": "Protocole de routage permettant aux routeurs d'échanger des informations sur les chemins disponibles.",
+    "domaine": "Réseau",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "ARP",
+    "definition": "Protocole permettant notamment d'associer une adresse IP à une adresse MAC sur un réseau local.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Traceroute",
+    "definition": "Outil permettant d'identifier les différents équipements traversés par des paquets réseau.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "MTU",
+    "definition": "Taille maximale d'un paquet pouvant être transmis sur une interface réseau sans fragmentation.",
+    "domaine": "Réseau",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Proxy inverse",
+    "definition": "Serveur intermédiaire placé devant des serveurs pour recevoir et distribuer les requêtes des clients.",
+    "domaine": "Réseau",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "CDN",
+    "definition": "Réseau de serveurs répartis géographiquement permettant de fournir plus rapidement des contenus aux utilisateurs.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Serveur DNS récursif",
+    "definition": "Serveur DNS qui recherche les informations nécessaires pour résoudre un nom de domaine.",
+    "domaine": "Réseau",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "DHCP Relay",
+    "definition": "Mécanisme permettant de transmettre des requêtes DHCP entre différents réseaux.",
+    "domaine": "Réseau",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "TLS",
+    "definition": "Protocole cryptographique utilisé notamment pour sécuriser les communications sur Internet.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Zero-day",
+    "definition": "Vulnérabilité inconnue ou non corrigée dont l'exploitation peut précéder la disponibilité d'un correctif.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "APT",
+    "definition": "Type de campagne d'attaque informatique menée de manière ciblée et persistante.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "SOC",
+    "definition": "Équipe ou centre chargé de surveiller et de traiter les événements de sécurité informatique.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "SIEM",
+    "definition": "Système qui centralise et analyse les événements de sécurité provenant de différentes sources.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "IDS",
+    "definition": "Système capable de détecter des activités potentiellement malveillantes sur un réseau ou un système.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "IPS",
+    "definition": "Système capable de détecter et de bloquer certaines activités réseau malveillantes.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "WAF",
+    "definition": "Pare-feu spécialisé dans la protection des applications web contre certaines attaques.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "DDoS",
+    "definition": "Attaque consistant à envoyer un grand nombre de requêtes afin de perturber la disponibilité d'un service.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Escalade de privilèges",
+    "definition": "Technique permettant à un utilisateur ou programme d'obtenir des droits supérieurs à ceux initialement autorisés.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Exfiltration de données",
+    "definition": "Action consistant à transférer des données d'un système vers un emplacement non autorisé.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Authentification multifactorielle",
+    "definition": "Méthode d'authentification utilisant plusieurs catégories de facteurs pour vérifier une identité.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Principe du moindre privilège",
+    "definition": "Principe consistant à donner à chaque utilisateur ou programme uniquement les droits nécessaires.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Zero Trust",
+    "definition": "Approche de sécurité qui ne considère pas automatiquement un utilisateur ou un appareil comme fiable.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Pentest",
+    "definition": "Évaluation de sécurité autorisée visant à identifier des vulnérabilités dans un système.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Forensic informatique",
+    "definition": "Analyse de systèmes et de données numériques afin de rechercher des éléments utiles à une investigation.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Authentification biométrique",
+    "definition": "Méthode permettant de vérifier une identité à partir d'une caractéristique biologique ou comportementale.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Injection de commande",
+    "definition": "Vulnérabilité permettant de faire exécuter à un système des commandes qui n'étaient pas prévues.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "XSS",
+    "definition": "Vulnérabilité permettant notamment d'injecter du contenu actif dans une page web consultée par d'autres utilisateurs.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "CSRF",
+    "definition": "Type d'attaque qui peut pousser un utilisateur authentifié à effectuer involontairement une action sur un site.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Authentification sans mot de passe",
+    "definition": "Méthode d'accès à un compte ne reposant pas directement sur un mot de passe traditionnel.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Transaction",
+    "definition": "Ensemble d'opérations sur une base de données traité comme une unité logique.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "ACID",
+    "definition": "Ensemble de propriétés garantissant notamment la fiabilité des transactions d'une base de données.",
+    "domaine": "Base de données",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Indexation",
+    "definition": "Technique permettant d'organiser des structures d'index afin d'accélérer certaines recherches dans une base de données.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Vue SQL",
+    "definition": "Structure virtuelle représentant le résultat d'une requête SQL.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Procédure stockée",
+    "definition": "Ensemble d'instructions SQL enregistré directement dans une base de données.",
+    "domaine": "Base de données",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Déclencheur",
+    "definition": "Mécanisme permettant d'exécuter automatiquement une action lorsqu'un événement se produit dans une base de données.",
+    "domaine": "Base de données",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Réindexation",
+    "definition": "Opération consistant à reconstruire ou réorganiser les index d'une base de données.",
+    "domaine": "Base de données",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Réplication",
+    "definition": "Technique consistant à maintenir des copies de données sur plusieurs systèmes.",
+    "domaine": "Base de données",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Sharding",
+    "definition": "Technique consistant à répartir les données d'une base entre plusieurs machines ou partitions.",
+    "domaine": "Base de données",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "NoSQL",
+    "definition": "Famille de systèmes de gestion de données ne reposant pas nécessairement sur le modèle relationnel classique.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Base de données distribuée",
+    "definition": "Base dont les données sont réparties sur plusieurs machines ou emplacements.",
+    "domaine": "Base de données",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Entrepôt de données",
+    "definition": "Système destiné à stocker et analyser de grandes quantités de données provenant de différentes sources.",
+    "domaine": "Data",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Big Data",
+    "definition": "Ensemble de méthodes et de technologies utilisées pour traiter de très grands volumes de données.",
+    "domaine": "Data",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Machine Learning",
+    "definition": "Domaine de l'intelligence artificielle permettant à des systèmes d'apprendre à partir de données.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Intelligence artificielle",
+    "definition": "Ensemble de techniques permettant à des systèmes informatiques d'effectuer certaines tâches associées à l'intelligence humaine.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Réseau de neurones",
+    "definition": "Modèle informatique inspiré du fonctionnement simplifié des réseaux de neurones biologiques.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Deep Learning",
+    "definition": "Approche du machine learning utilisant notamment des réseaux de neurones comportant plusieurs couches.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Entraînement",
+    "definition": "Processus durant lequel un modèle d'apprentissage automatique apprend à partir de données.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Modèle",
+    "definition": "Système mathématique ou informatique entraîné ou conçu pour produire des résultats à partir de données.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Dataset",
+    "definition": "Ensemble organisé de données utilisé notamment pour l'analyse ou l'entraînement d'un modèle.",
+    "domaine": "Data",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "API Gateway",
+    "definition": "Composant servant de point d'entrée central pour gérer les requêtes vers plusieurs services.",
+    "domaine": "Architecture",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Kubernetes",
+    "definition": "Système permettant notamment d'orchestrer et de gérer des applications exécutées dans des conteneurs.",
+    "domaine": "Cloud",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Orchestration",
+    "definition": "Automatisation de la gestion et de la coordination de plusieurs ressources ou services informatiques.",
+    "domaine": "Cloud",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Infrastructure as Code",
+    "definition": "Méthode permettant de définir et gérer une infrastructure informatique à l'aide de fichiers de configuration.",
+    "domaine": "Cloud",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "IaaS",
+    "definition": "Modèle cloud fournissant des ressources informatiques comme des machines virtuelles, du stockage ou du réseau.",
+    "domaine": "Cloud",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "PaaS",
+    "definition": "Modèle cloud fournissant une plateforme permettant de développer et déployer des applications.",
+    "domaine": "Cloud",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "SaaS",
+    "definition": "Modèle dans lequel un logiciel est fourni directement comme un service accessible à distance.",
+    "domaine": "Cloud",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Algorithme de tri",
+    "definition": "Algorithme permettant de classer des données selon un ordre déterminé.",
+    "domaine": "Algorithmique",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Interface",
+    "definition": "Ensemble de méthodes ou de règles définissant la manière dont des composants logiciels peuvent communiquer.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Énumération",
+    "definition": "Type de données permettant de définir un ensemble limité de valeurs nommées.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Exception",
+    "definition": "Événement signalant une situation anormale pendant l'exécution d'un programme.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Gestion des erreurs",
+    "definition": "Ensemble de techniques utilisées pour détecter et traiter les erreurs d'un programme.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Expression régulière",
+    "definition": "Motif permettant de rechercher ou de manipuler des chaînes de caractères selon des règles précises.",
+    "domaine": "Programmation",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Thread",
+    "definition": "Unité d'exécution indépendante au sein d'un processus.",
+    "domaine": "Systèmes",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Processus zombie",
+    "definition": "Processus terminé dont les informations n'ont pas encore été récupérées par son processus parent.",
+    "domaine": "Systèmes",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Ordonnanceur",
+    "definition": "Composant d'un système d'exploitation qui décide quel processus ou thread doit utiliser le processeur.",
+    "domaine": "Systèmes",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Noyau",
+    "definition": "Partie centrale d'un système d'exploitation qui gère notamment le matériel et les ressources du système.",
+    "domaine": "Systèmes",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Appel système",
+    "definition": "Mécanisme permettant à un programme de demander un service au noyau du système d'exploitation.",
+    "domaine": "Systèmes",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Mémoire virtuelle",
+    "definition": "Technique permettant à un système d'utiliser une partie du stockage comme extension de la mémoire vive.",
+    "domaine": "Systèmes",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Fragmentation",
+    "definition": "Phénomène dans lequel l'espace de stockage ou la mémoire se retrouve réparti en plusieurs zones dispersées.",
+    "domaine": "Systèmes",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "RAID",
+    "definition": "Technologie permettant de combiner plusieurs disques afin d'améliorer certaines caractéristiques comme la redondance ou les performances.",
+    "domaine": "Stockage",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Système de fichiers",
+    "definition": "Mécanisme permettant d'organiser, de stocker et de retrouver des fichiers sur un support.",
+    "domaine": "Systèmes",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Partition",
+    "definition": "Division logique d'un support de stockage en une ou plusieurs zones indépendantes.",
+    "domaine": "Stockage",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "BIOS",
+    "definition": "Logiciel intégré à la carte mère qui initialise certains composants matériels au démarrage d'un ordinateur.",
+    "domaine": "Matériel",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "UEFI",
+    "definition": "Interface moderne utilisée pour initialiser le matériel et lancer le système d'exploitation.",
+    "domaine": "Matériel",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Firmware",
+    "definition": "Logiciel intégré à un appareil électronique permettant de contrôler son fonctionnement matériel.",
+    "domaine": "Matériel",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Microcontrôleur",
+    "definition": "Circuit intégré contenant notamment un processeur, de la mémoire et des interfaces d'entrée-sortie.",
+    "domaine": "Systèmes embarqués",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "GPIO",
+    "definition": "Interface permettant à un système électronique de contrôler ou de lire des signaux numériques.",
+    "domaine": "Électronique",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Adresse de broadcast",
+    "definition": "Adresse réseau utilisée pour envoyer un paquet à tous les appareils d'un réseau ou d'un sous-réseau.",
+    "domaine": "Réseaux",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "VPN site-à-site",
+    "definition": "Connexion VPN permettant de relier de manière sécurisée deux réseaux distincts.",
+    "domaine": "Réseaux",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Routage",
+    "definition": "Processus permettant de déterminer le chemin qu'un paquet doit suivre pour atteindre sa destination.",
+    "domaine": "Réseaux",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Table de routage",
+    "definition": "Table contenant les informations utilisées par un équipement réseau pour choisir les chemins des paquets.",
+    "domaine": "Réseaux",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "ICMP",
+    "definition": "Protocole réseau utilisé notamment pour transmettre des messages de contrôle et de diagnostic.",
+    "domaine": "Réseaux",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Pare-feu applicatif",
+    "definition": "Pare-feu capable d'analyser les communications au niveau des applications.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Gestionnaire de mots de passe",
+    "definition": "Logiciel permettant de stocker et gérer de manière sécurisée des mots de passe.",
+    "domaine": "Cybersécurité",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Attaque par force brute",
+    "definition": "Technique consistant à essayer de nombreuses combinaisons afin de trouver un mot de passe ou une clé.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Attaque par déni de service",
+    "definition": "Attaque visant à rendre un service informatique indisponible en le surchargeant de requêtes.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Ransomware",
+    "definition": "Logiciel malveillant qui bloque ou chiffre des données afin d'exiger généralement une rançon.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Rootkit",
+    "definition": "Ensemble de logiciels malveillants conçus pour maintenir un accès privilégié et dissimuler certaines activités.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Keylogger",
+    "definition": "Logiciel ou dispositif capable d'enregistrer les frappes effectuées sur un clavier.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Sandbox",
+    "definition": "Environnement isolé permettant d'exécuter un programme sans lui donner un accès direct à l'ensemble du système.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Authentification unique",
+    "definition": "Mécanisme permettant à un utilisateur de s'authentifier une fois pour accéder à plusieurs services.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Journalisation",
+    "definition": "Enregistrement des événements et activités d'un système informatique.",
+    "domaine": "Administration système",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Observabilité",
+    "definition": "Capacité à comprendre l'état et le comportement d'un système à partir des données qu'il produit.",
+    "domaine": "Administration système",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Métrique",
+    "definition": "Valeur mesurée permettant de suivre l'état ou les performances d'un système.",
+    "domaine": "Informatique",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Intégration continue",
+    "definition": "Pratique consistant à intégrer et tester régulièrement les modifications du code.",
+    "domaine": "DevOps",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Déploiement continu",
+    "definition": "Pratique permettant d'automatiser la mise en production des modifications validées.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Pipeline CI/CD",
+    "definition": "Ensemble automatisé d'étapes permettant notamment de construire, tester et déployer une application.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Architecture événementielle",
+    "definition": "Architecture dans laquelle les composants communiquent principalement au moyen d'événements.",
+    "domaine": "Architecture logicielle",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Message queue",
+    "definition": "Système permettant de stocker temporairement des messages afin que des composants puissent les traiter de manière asynchrone.",
+    "domaine": "Architecture logicielle",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Cache distribué",
+    "definition": "Cache partagé entre plusieurs instances d'une application ou plusieurs machines.",
+    "domaine": "Architecture logicielle",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "ORM",
+    "definition": "Technique permettant de manipuler des données d'une base relationnelle à travers des objets du langage de programmation.",
+    "domaine": "Développement logiciel",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Migration de base de données",
+    "definition": "Modification contrôlée de la structure ou des données d'une base de données.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Index de base de données",
+    "definition": "Structure permettant d'accélérer certaines recherches dans une base de données.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "ETL",
+    "definition": "Processus consistant à extraire des données, les transformer puis les charger dans un système cible.",
+    "domaine": "Data",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Apprentissage supervisé",
+    "definition": "Méthode d'apprentissage automatique utilisant des données associées à des résultats connus.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Apprentissage non supervisé",
+    "definition": "Méthode d'apprentissage automatique permettant de découvrir des structures dans des données sans résultats prédéfinis.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Apprentissage profond",
+    "definition": "Approche de l'apprentissage automatique reposant notamment sur des réseaux de neurones comportant plusieurs couches.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Modèle de langage",
+    "definition": "Modèle informatique capable de traiter ou de générer du texte à partir de régularités apprises dans des données.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Tokenisation",
+    "definition": "Processus consistant à découper un texte en unités utilisées par un système de traitement automatique.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Vision par ordinateur",
+    "definition": "Domaine de l'intelligence artificielle consacré à l'analyse et à l'interprétation d'images ou de vidéos.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Réalité virtuelle",
+    "definition": "Technologie permettant de créer un environnement numérique dans lequel l'utilisateur peut être immergé.",
+    "domaine": "Technologies numériques",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Réalité augmentée",
+    "definition": "Technologie qui superpose des éléments numériques à la perception du monde réel.",
+    "domaine": "Technologies numériques",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Internet des objets",
+    "definition": "Ensemble d'objets physiques connectés capables de communiquer et d'échanger des données.",
+    "domaine": "IoT",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Edge computing",
+    "definition": "Approche consistant à traiter les données au plus près de leur source plutôt que de tout envoyer vers un centre distant.",
+    "domaine": "Cloud et réseaux",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Fonction serverless",
+    "definition": "Fonction exécutée à la demande par une infrastructure gérée par un fournisseur, sans gestion directe des serveurs par le développeur.",
+    "domaine": "Cloud",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "GraphQL",
+    "definition": "Langage de requête permettant de demander précisément les données nécessaires à une API.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "REST",
+    "definition": "Style architecturale pour créer des services web basés sur les standards HTTP.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "SOAP",
+    "definition": "Protocole d'échange de messages utilisant XML pour les web services.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "WebSocket",
+    "definition": "Protocole permettant une communication bidirectionnelle en temps réel sur le web.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "OAuth",
+    "definition": "Protocole permettant à un utilisateur d'autoriser une application à accéder à ses données.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "SAML",
+    "definition": "Standard permettant l'authentification et l'autorisation entre différents domaines.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "JWT",
+    "definition": "Jeton web JSON permettant de transmettre des informations de manière sécurisée entre deux parties.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Regex",
+    "definition": "Motif de recherche permettant de trouver ou manipuler des chaînes de caractères.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Lambda",
+    "definition": "Fonction anonyme ou peu nommée souvent utilisée comme argument ou retour de fonction.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Closure",
+    "definition": "Fonction qui a accès aux variables de sa portée parente même après son exécution.",
+    "domaine": "Programmation",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Yield",
+    "definition": "Instruction permettant à une fonction de suspendre son exécution et retourner une valeur.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Promise",
+    "definition": "Objet représentant l'aboutissement ou l'échec d'une opération asynchrone.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Async/Await",
+    "definition": "Syntaxe permettant d'écrire du code asynchrone de manière plus lisible.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Callback",
+    "definition": "Fonction passée en argument et appelée à la fin d'une autre fonction.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Event Loop",
+    "definition": "Mécanisme permettant d'exécuter du code asynchrone dans un langage single-threaded.",
+    "domaine": "Programmation",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Decorator",
+    "definition": "Fonction qui modifie le comportement d'une autre fonction ou classe.",
+    "domaine": "Programmation",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Middleware",
+    "definition": "Composant logiciel qui traite les requêtes entre le client et le serveur principal.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Hook",
+    "definition": "Point d'extension permettant d'exécuter du code personnalisé à des moments clés.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Plugin",
+    "definition": "Composant logiciel qui s'ajoute à une application pour étendre ses fonctionnalités.",
+    "domaine": "Logiciel",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Bundle",
+    "definition": "Processus de regroupement et d'optimisation des fichiers d'une application.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Webpack",
+    "definition": "Outil permettant de empaqueter et optimiser les ressources d'une application web.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "NPM",
+    "definition": "Gestionnaire de paquets pour JavaScript et Node.js.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Node.js",
+    "definition": "Environnement d'exécution permettant de lancer JavaScript en dehors du navigateur.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "React",
+    "definition": "Bibliothèque JavaScript pour créer des interfaces utilisateur interactives.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Vue.js",
+    "definition": "Framework JavaScript progressif pour construire des interfaces utilisateur.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Angular",
+    "definition": "Framework JavaScript complet pour développer des applications web côté client.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Svelte",
+    "definition": "Framework de compilation permettant de créer des applications web performantes.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Express",
+    "definition": "Framework minimaliste pour Node.js permettant de créer des serveurs web.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Django",
+    "definition": "Framework Python haute niveau pour développer des applications web rapidement.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Flask",
+    "definition": "Framework Python léger pour créer des applications web simples.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "FastAPI",
+    "definition": "Framework Python moderne pour créer rapidement des APIs performantes.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Rails",
+    "definition": "Framework Ruby permettant le développement rapide d'applications web.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Spring",
+    "definition": "Framework Java fournissant une infrastructure complète pour développer des applications.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Gradle",
+    "definition": "Outil de build automatisé pour les projets Java et autres.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Maven",
+    "definition": "Outil de gestion de projets et de construction pour Java.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Docker Compose",
+    "definition": "Outil permettant de définir et exécuter des applications multi-conteneurs.",
+    "domaine": "DevOps",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Helm",
+    "definition": "Gestionnaire de paquets pour Kubernetes permettant de déployer facilement des applications.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Terraform",
+    "definition": "Outil permettant de gérer l'infrastructure cloud de manière déclarative.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Ansible",
+    "definition": "Outil permettant d'automatiser le provisionnement et la gestion de configurations.",
+    "domaine": "DevOps",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Puppet",
+    "definition": "Outil permettant d'automatiser la gestion de configurations informatiques.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Chef",
+    "definition": "Plateforme permettant d'automatiser l'infrastructure et les configurations.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Jenkins",
+    "definition": "Serveur d'automatisation open source permettant de mettre en place l'intégration continue.",
+    "domaine": "DevOps",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "GitLab CI",
+    "definition": "Service d'intégration continue intégré à GitLab.",
+    "domaine": "DevOps",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "GitHub Actions",
+    "definition": "Service permettant d'automatiser les workflows directement dans GitHub.",
+    "domaine": "DevOps",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Prometheus",
+    "definition": "Système de monitoring et d'alertes collectant les métriques en temps réel.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Grafana",
+    "definition": "Plateforme de visualisation des données et de création de tableaux de bord.",
+    "domaine": "DevOps",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "ELK Stack",
+    "definition": "Ensemble de trois outils (Elasticsearch, Logstash, Kibana) pour analyser les logs.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Elasticsearch",
+    "definition": "Moteur de recherche et d'analyse distribuée basé sur Lucene.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Kibana",
+    "definition": "Plateforme de visualisation pour Elasticsearch permettant d'explorer les données.",
+    "domaine": "DevOps",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "MongoDB",
+    "definition": "Base de données NoSQL document-oriented populaire.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Redis",
+    "definition": "Base de données en mémoire clé-valeur utilisée pour le cache et les sessions.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "PostgreSQL",
+    "definition": "Système de gestion de base de données relationnelle open source avancé.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "MySQL",
+    "definition": "Système de gestion de base de données relationnelle populaire.",
+    "domaine": "Base de données",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "MariaDB",
+    "definition": "Variante open source de MySQL offrant une meilleure performance et compatibilité.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Cassandra",
+    "definition": "Base de données NoSQL distribuée hautement scalable.",
+    "domaine": "Base de données",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "DynamoDB",
+    "definition": "Service de base de données NoSQL complètement géré par AWS.",
+    "domaine": "Cloud",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Firebase",
+    "definition": "Plateforme de développement web et mobile fournie par Google.",
+    "domaine": "Cloud",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Heroku",
+    "definition": "Plateforme cloud permettant de déployer facilement des applications.",
+    "domaine": "Cloud",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "AWS",
+    "definition": "Amazon Web Services, l'offre cloud la plus populaire proposée par Amazon.",
+    "domaine": "Cloud",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Azure",
+    "definition": "Plateforme cloud proposée par Microsoft.",
+    "domaine": "Cloud",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "GCP",
+    "definition": "Google Cloud Platform, l'offre cloud proposée par Google.",
+    "domaine": "Cloud",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "EC2",
+    "definition": "Service de machines virtuelles d'Amazon Web Services.",
+    "domaine": "Cloud",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "S3",
+    "definition": "Service de stockage d'objets Amazon Web Services.",
+    "domaine": "Cloud",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Lambda AWS",
+    "definition": "Service de calcul sans serveur proposé par Amazon Web Services.",
+    "domaine": "Cloud",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "VPC",
+    "definition": "Virtual Private Cloud permettant de créer un réseau isolé dans le cloud.",
+    "domaine": "Cloud",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Load Balancing",
+    "definition": "Technique de répartition de charge entre plusieurs serveurs.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Scaling",
+    "definition": "Ajustement des ressources informatiques en fonction de la charge.",
+    "domaine": "Cloud",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Horizontal Scaling",
+    "definition": "Augmentation de la capacité en ajoutant plus de machines.",
+    "domaine": "Cloud",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Vertical Scaling",
+    "definition": "Augmentation de la capacité en améliorant les ressources d'une seule machine.",
+    "domaine": "Cloud",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Auto Scaling",
+    "definition": "Ajustement automatique des ressources en fonction de la demande.",
+    "domaine": "Cloud",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Load Balancer",
+    "definition": "Système répartissant les requêtes entre plusieurs serveurs.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Reverse Proxy",
+    "definition": "Serveur intermédiaire qui masque l'adresse des serveurs internes.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "API Key",
+    "definition": "Clé unique permettant d'identifier une application ou un utilisateur auprès d'une API.",
+    "domaine": "Web",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Rate Limiting",
+    "definition": "Technique limitant le nombre de requêtes qu'un utilisateur peut faire.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Caching",
+    "definition": "Technique de stockage temporaire de données pour améliorer les performances.",
+    "domaine": "Informatique",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "CDN",
+    "definition": "Réseau de distribution de contenu permettant de servir plus rapidement les fichiers.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Compression",
+    "definition": "Technique réduisant la taille des fichiers pour les transmettre plus rapidement.",
+    "domaine": "Informatique",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "GZIP",
+    "definition": "Format de compression couramment utilisé pour compresser les données web.",
+    "domaine": "Informatique",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Serialization",
+    "definition": "Processus de conversion d'objets en format lisible ou transmissible.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Deserialization",
+    "definition": "Processus inverse de la sérialisation, recréant des objets à partir de données.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Protocol Buffer",
+    "definition": "Méthode sérialisation des données proposée par Google.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "gRPC",
+    "definition": "Framework de communication RPC moderne utilisant Protocol Buffers.",
+    "domaine": "Web",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "OpenAPI",
+    "definition": "Spécification pour documenter et décrire les APIs REST.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Swagger",
+    "definition": "Ensemble d'outils pour concevoir, documenter et tester les APIs.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Postman",
+    "definition": "Plateforme permettant de tester et documenter les APIs facilement.",
+    "domaine": "Web",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Mock Server",
+    "definition": "Serveur simulé répondant à des requêtes pour les tests.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Stub",
+    "definition": "Implémentation simple d'une fonction utilisée pour les tests.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Coverage",
+    "definition": "Mesure du pourcentage du code testé par les tests unitaires.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "TDD",
+    "definition": "Test-Driven Development, approche développant les tests avant le code.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "BDD",
+    "definition": "Behavior-Driven Development, approche axée sur le comportement attendu.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "SOLID",
+    "definition": "Ensemble de cinq principes pour améliorer la qualité du code orienté objet.",
+    "domaine": "Programmation",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "DRY",
+    "definition": "Don't Repeat Yourself, principe évitant la duplication de code.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "KISS",
+    "definition": "Keep It Simple, Stupid, principe prônant la simplicité.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "YAGNI",
+    "definition": "You Aren't Gonna Need It, principe évitant l'overengineering.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Refactoring",
+    "definition": "Amélioration du code sans changer son comportement externe.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Code Review",
+    "definition": "Examen du code par d'autres développeurs pour assurer la qualité.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Pair Programming",
+    "definition": "Deux développeurs travaillant ensemble sur le même code.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Agile",
+    "definition": "Méthodologie de développement itérative et adaptive.",
+    "domaine": "Gestion de projet",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Scrum",
+    "definition": "Framework Agile structurant le développement en sprints.",
+    "domaine": "Gestion de projet",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Kanban",
+    "definition": "Méthode visuelle de gestion de flux de travail.",
+    "domaine": "Gestion de projet",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Sprint",
+    "definition": "Période fixe durant laquelle une équipe développe des fonctionnalités.",
+    "domaine": "Gestion de projet",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Backlog",
+    "definition": "Liste des fonctionnalités et tâches à développer.",
+    "domaine": "Gestion de projet",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Story Point",
+    "definition": "Unité d'estimation de la complexité d'une tâche dans Scrum.",
+    "domaine": "Gestion de projet",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Burndown Chart",
+    "definition": "Graphique montrant la progression d'un sprint.",
+    "domaine": "Gestion de projet",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Swagger UI",
+    "definition": "Interface web permettant de visualiser et tester une API Swagger.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Insomnia",
+    "definition": "Client REST pour tester les APIs alternative à Postman.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "cURL",
+    "definition": "Outil ligne de commande pour faire des requêtes HTTP.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Wget",
+    "definition": "Outil pour télécharger des fichiers via HTTP et FTP.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "SSH Key",
+    "definition": "Paire de clés utilisée pour l'authentification SSH sécurisée.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Public Key Infrastructure",
+    "definition": "Ensemble de processus et outils pour gérer les certificats numériques.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Self-signed Certificate",
+    "definition": "Certificat numérique signé par sa propre autorité.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Let's Encrypt",
+    "definition": "Autorité de certification offrant des certificats SSL/TLS gratuits.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "SSL Certificate",
+    "definition": "Certificat numérique permettant de chiffrer la communication HTTPS.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Penetration Testing",
+    "definition": "Test de sécurité simulant une attaque pour trouver les vulnérabilités.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Vulnerability Assessment",
+    "definition": "Analyse systématique pour identifier les faiblesses de sécurité.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Security Audit",
+    "definition": "Examen complet des mesures de sécurité d'une organisation.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "OWASP",
+    "definition": "Organisation promouvant la sécurité des applications web.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "CVSS",
+    "definition": "Système de notation évaluant la gravité des vulnérabilités.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Patch Management",
+    "definition": "Processus d'application des mises à jour de sécurité.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Backup Strategy",
+    "definition": "Plan pour sauvegarder régulièrement les données critiques.",
+    "domaine": "Système",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Disaster Recovery",
+    "definition": "Plan pour restaurer les systèmes après une défaillance.",
+    "domaine": "Système",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Business Continuity",
+    "definition": "Capacité d'une organisation à continuer ses opérations après une catastrophe.",
+    "domaine": "Gestion",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "RTO",
+    "definition": "Recovery Time Objective, temps maximum acceptable pour restaurer un service.",
+    "domaine": "Système",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "RPO",
+    "definition": "Recovery Point Objective, quantité de données qu'on peut perdre.",
+    "domaine": "Système",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Availability",
+    "definition": "Pourcentage de temps qu'un système fonctionne correctement.",
+    "domaine": "Système",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "SLA",
+    "definition": "Service Level Agreement définissant les garanties de service.",
+    "domaine": "Gestion",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "SLO",
+    "definition": "Service Level Objective, objectif de performance à atteindre.",
+    "domaine": "Gestion",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "SLI",
+    "definition": "Service Level Indicator, mesure de la performance d'un service.",
+    "domaine": "Gestion",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Uptime",
+    "definition": "Durée pendant laquelle un système fonctionne sans interruption.",
+    "domaine": "Système",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Downtime",
+    "definition": "Période pendant laquelle un système n'est pas disponible.",
+    "domaine": "Système",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Incident Management",
+    "definition": "Processus de gestion et résolution des problèmes critiques.",
+    "domaine": "Administration système",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Root Cause Analysis",
+    "definition": "Analyse pour trouver la cause profonde d'un problème.",
+    "domaine": "Administration système",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Postmortem",
+    "definition": "Analyse rétrospective d'un incident pour apprendre et améliorer.",
+    "domaine": "Administration système",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "On-call",
+    "definition": "État de disponibilité d'une personne pour intervenir sur un incident.",
+    "domaine": "Administration système",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Escalation",
+    "definition": "Processus de transmission d'un problème à une autorité supérieure.",
+    "domaine": "Gestion",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Logging",
+    "definition": "Enregistrement des événements et actions d'un système.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Tracing",
+    "definition": "Suivi détaillé de l'exécution du code pour le débogage.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Profiling",
+    "definition": "Analyse de la performance du code pour identifier les goulets.",
+    "domaine": "Programmation",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Benchmarking",
+    "definition": "Mesure comparative de la performance d'un système.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Load Test",
+    "definition": "Test soumettant un système à une charge prévisible.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Stress Test",
+    "definition": "Test poussant un système au-delà de ses limites normales.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Chaos Engineering",
+    "definition": "Pratique d'injection d'échecs pour tester la résilience.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Feature Flag",
+    "definition": "Mécanisme permettant d'activer/désactiver les fonctionnalités dynamiquement.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Blue-Green Deployment",
+    "definition": "Stratégie de déploiement avec deux environnements identiques.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Canary Deployment",
+    "definition": "Déploiement progressif d'une nouvelle version à un sous-ensemble d'utilisateurs.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Rolling Deployment",
+    "definition": "Déploiement où les instances sont mises à jour graduellement.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Shadow Traffic",
+    "definition": "Technique de test envoyant une copie du trafic vers un nouveau système.",
+    "domaine": "Programmation",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "A/B Testing",
+    "definition": "Comparaison de deux versions pour voir laquelle fonctionne mieux.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Personalization",
+    "definition": "Adaptation du contenu et des expériences par utilisateur.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Analytics",
+    "definition": "Collecte et analyse des données pour comprendre les comportements.",
+    "domaine": "Data",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Telemetry",
+    "definition": "Collecte automatique de données de diagnostic d'un système.",
+    "domaine": "Administration système",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Datadog",
+    "definition": "Plateforme de monitoring et d'analyse pour l'infrastructure cloud.",
+    "domaine": "DevOps",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "New Relic",
+    "definition": "Plateforme de monitoring pour la performance des applications.",
+    "domaine": "DevOps",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Splunk",
+    "definition": "Plateforme pour le monitoring et l'analyse des données machine.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Correlation",
+    "definition": "Relation statistique entre deux variables.",
+    "domaine": "Data",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "API Versioning",
+    "definition": "Gestion de plusieurs versions d'une API pour la compatibilité.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Deprecation",
+    "definition": "Processus de suppression progressive d'une fonctionnalité.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Backward Compatibility",
+    "definition": "Capacité d'une nouvelle version à fonctionner avec les anciennes données.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Forward Compatibility",
+    "definition": "Capacité d'une ancienne version à fonctionner avec les nouvelles données.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Semver",
+    "definition": "Semantic Versioning, convention de numérotation des versions.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Changelog",
+    "definition": "Document listant les changements d'une nouvelle version.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Release Notes",
+    "definition": "Document décrivant les nouveautés et changements d'une version.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "API Documentation",
+    "definition": "Documentation décrivant comment utiliser une API.",
+    "domaine": "Web",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "README",
+    "definition": "Fichier contenant les informations principales d'un projet.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Contributing Guide",
+    "definition": "Guide expliquant comment contribuer à un projet open source.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Code of Conduct",
+    "definition": "Règles de comportement pour les contributeurs d'un projet.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "LICENSE",
+    "definition": "Fichier définissant les termes d'utilisation d'un projet.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Gitignore",
+    "definition": "Fichier spécifiant quels fichiers Git doit ignorer.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Submodule",
+    "definition": "Référence à un autre dépôt Git intégré dans un projet.",
+    "domaine": "Programmation",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Bisect",
+    "definition": "Commande Git pour identifier le commit qui a introduit un bug.",
+    "domaine": "Programmation",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Rebase",
+    "definition": "Opération Git permettant de réappliquer les commits sur une autre branche.",
+    "domaine": "Programmation",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Cherry Pick",
+    "definition": "Opération Git appliquant un commit spécifique à une autre branche.",
+    "domaine": "Programmation",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Stash",
+    "definition": "Commande Git sauvegardant temporairement les changements.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Tag",
+    "definition": "Marqueur Git identifiant une version spécifique.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Hook",
+    "definition": "Script exécuté automatiquement lors d'événements Git.",
+    "domaine": "Programmation",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Windows Subsystem for Linux",
+    "definition": "Couche de compatibilité permettant d'exécuter Linux sur Windows.",
+    "domaine": "Système",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Docker Desktop",
+    "definition": "Application permettant d'utiliser Docker facilement sur Windows et Mac.",
+    "domaine": "DevOps",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Hyper-V",
+    "definition": "Hyperviseur Windows permettant la virtualisation.",
+    "domaine": "Système",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "KVM",
+    "definition": "Hyperviseur Linux pour la virtualisation.",
+    "domaine": "Système",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "QEMU",
+    "definition": "Émulateur et virtualiste open source.",
+    "domaine": "Système",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Vagrant",
+    "definition": "Outil pour créer et configurer des environnements de développement virtuels.",
+    "domaine": "DevOps",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "VirtualBox",
+    "definition": "Logiciel de virtualisation permettant d'exécuter des VMs.",
+    "domaine": "Système",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "VMware",
+    "definition": "Suite de logiciels de virtualisation professionnelle.",
+    "domaine": "Système",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Container Registry",
+    "definition": "Dépôt de stockage d'images de conteneurs.",
+    "domaine": "DevOps",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Image Registry",
+    "definition": "Service stockant les images de conteneurs pour le déploiement.",
+    "domaine": "DevOps",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Dockerfile",
+    "definition": "Fichier contenant les instructions pour construire une image Docker.",
+    "domaine": "DevOps",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Entrypoint",
+    "definition": "Commande exécutée au démarrage d'un conteneur.",
+    "domaine": "DevOps",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Volume",
+    "definition": "Système de stockage persistant pour les données d'un conteneur.",
+    "domaine": "DevOps",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Network",
+    "definition": "Configuration réseau permettant la communication entre conteneurs.",
+    "domaine": "DevOps",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Pod",
+    "definition": "Unité de déploiement la plus petite dans Kubernetes.",
+    "domaine": "DevOps",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Deployment",
+    "definition": "Ressource Kubernetes gérant le déploiement d'applications.",
+    "domaine": "DevOps",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Service",
+    "definition": "Ressource Kubernetes exposant les pods à travers un point d'accès.",
+    "domaine": "DevOps",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Ingress",
+    "definition": "Ressource Kubernetes gérant l'accès HTTP aux services.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "ConfigMap",
+    "definition": "Objet Kubernetes stockant les données de configuration.",
+    "domaine": "DevOps",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Secret",
+    "definition": "Objet Kubernetes stockant les données sensibles.",
+    "domaine": "DevOps",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "StatefulSet",
+    "definition": "Ressource Kubernetes gérant les applications avec état.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "DaemonSet",
+    "definition": "Ressource Kubernetes exécutant un pod sur chaque nœud.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Job",
+    "definition": "Ressource Kubernetes exécutant une tâche jusqu'à complétion.",
+    "domaine": "DevOps",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "CronJob",
+    "definition": "Ressource Kubernetes exécutant une tâche selon un calendrier.",
+    "domaine": "DevOps",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "kubectl",
+    "definition": "Outil ligne de commande pour contrôler les clusters Kubernetes.",
+    "domaine": "DevOps",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "etcd",
+    "definition": "Stockage clé-valeur distribuée utilisé par Kubernetes.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "API Server",
+    "definition": "Composant central de Kubernetes gérant l'état du cluster.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Controller Manager",
+    "definition": "Composant Kubernetes exécutant les contrôleurs.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Scheduler",
+    "definition": "Composant Kubernetes décidant où placer les pods.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Kubelet",
+    "definition": "Agent Kubernetes exécutant sur chaque nœud.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Container Runtime",
+    "definition": "Logiciel exécutant les conteneurs sur un nœud.",
+    "domaine": "DevOps",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Containerd",
+    "definition": "Runtime de conteneur minimaliste et portable.",
+    "domaine": "DevOps",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "CRI-O",
+    "definition": "Runtime de conteneur léger conçu pour Kubernetes.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Pod Network",
+    "definition": "Réseau connectant les pods dans un cluster Kubernetes.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Flannel",
+    "definition": "Plugin réseau simple pour Kubernetes.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Calico",
+    "definition": "Plugin réseau avancé pour Kubernetes avec sécurité.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Cilium",
+    "definition": "Plugin réseau utilisant eBPF pour la sécurité réseau.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Network Policy",
+    "definition": "Objet Kubernetes contrôlant le trafic entre pods.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Service Mesh",
+    "definition": "Couche d'infrastructure gérant la communication entre services.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Istio",
+    "definition": "Service mesh permettant de gérer la sécurité et les performances.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Linkerd",
+    "definition": "Service mesh léger spécialisé dans la performance.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Consul",
+    "definition": "Plateforme service mesh et de découverte de services.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Service Discovery",
+    "definition": "Mécanisme permettant aux services de se découvrir dynamiquement.",
+    "domaine": "DevOps",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Load Balancing",
+    "definition": "Distribution du trafic entre plusieurs instances.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Circuit Breaker",
+    "definition": "Modèle arrêtant les requêtes vers un service défaillant.",
+    "domaine": "Architecture",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Bulkhead Pattern",
+    "definition": "Isolement des ressources pour éviter les défaillances en cascade.",
+    "domaine": "Architecture",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Retry Logic",
+    "definition": "Mécanisme réessayant automatiquement les opérations échouées.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Timeout",
+    "definition": "Délai maximum d'attente pour une opération.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Backoff Strategy",
+    "definition": "Stratégie augmentant progressivement le délai entre les tentatives.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Exponential Backoff",
+    "definition": "Stratégie doublant le délai d'attente à chaque tentative.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Jitter",
+    "definition": "Variation aléatoire ajoutée pour éviter les pics de charge.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Distributed Tracing",
+    "definition": "Suivi des requêtes à travers plusieurs services.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Jaeger",
+    "definition": "Outil de distributed tracing open source.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Zipkin",
+    "definition": "Plateforme de distributed tracing open source.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "OpenTelemetry",
+    "definition": "Standard ouvert pour l'observabilité.",
+    "domaine": "DevOps",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Metrics",
+    "definition": "Données numériques mesurant la performance.",
+    "domaine": "Administration système",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Traces",
+    "definition": "Enregistrements détaillés des étapes d'exécution.",
+    "domaine": "Administration système",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Logs",
+    "definition": "Messages enregistrant les événements d'une application.",
+    "domaine": "Administration système",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Three Pillars of Observability",
+    "definition": "Métriques, traces et logs comme fondements de l'observabilité.",
+    "domaine": "DevOps",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Structured Logging",
+    "definition": "Logs organisés en structures de données plutôt qu'en texte brut.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Log Aggregation",
+    "definition": "Centralisation des logs provenant de plusieurs sources.",
+    "domaine": "DevOps",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Log Level",
+    "definition": "Classification des logs par importance (DEBUG, INFO, WARN, ERROR).",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Request ID",
+    "definition": "Identifiant unique pour tracer une requête à travers les services.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Correlation ID",
+    "definition": "Identifiant liant les logs relatifs à une même opération.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Error Handling",
+    "definition": "Stratégies et mécanismes pour gérer les erreurs.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Try-Catch",
+    "definition": "Structure permettant de capturer et gérer les exceptions.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Finally Block",
+    "definition": "Bloc de code exécuté après try-catch quelle que soit l'exception.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Throw",
+    "definition": "Instruction levant une exception.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Custom Exception",
+    "definition": "Exception créée par le développeur pour un cas spécifique.",
+    "domaine": "Programmation",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Error Propagation",
+    "definition": "Transmission d'une erreur à la fonction appelante.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Error Recovery",
+    "definition": "Mécanismes permettant à un système de se rétablir après une erreur.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Graceful Degradation",
+    "definition": "Dégradation progressive des services en cas de défaillance.",
+    "domaine": "Architecture",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Fault Tolerance",
+    "definition": "Capacité d'un système à continuer malgré des défaillances.",
+    "domaine": "Architecture",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Resilience",
+    "definition": "Capacité d'un système à se rétablir rapidement.",
+    "domaine": "Architecture",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "High Availability",
+    "definition": "Architecture visant à minimiser les interruptions de service.",
+    "domaine": "Architecture",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Redundancy",
+    "definition": "Duplication des composants critiques pour la fiabilité.",
+    "domaine": "Architecture",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Failover",
+    "definition": "Basculement automatique vers une ressource de secours.",
+    "domaine": "Architecture",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Active-Active",
+    "definition": "Configuration où plusieurs instances traitent le trafic.",
+    "domaine": "Architecture",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Active-Passive",
+    "definition": "Configuration où une instance en attente prend le relais.",
+    "domaine": "Architecture",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Consensus",
+    "definition": "Accord entre plusieurs nœuds sur l'état du système.",
+    "domaine": "Distributed Systems",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Raft",
+    "definition": "Algorithme de consensus pour les systèmes distribués.",
+    "domaine": "Distributed Systems",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Paxos",
+    "definition": "Algorithme de consensus classique pour les systèmes distribués.",
+    "domaine": "Distributed Systems",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Byzantine Fault",
+    "definition": "Défaillance d'un nœud se comportant de manière imprévisible.",
+    "domaine": "Distributed Systems",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "CAP Theorem",
+    "definition": "Théorème affirmant l'impossibilité d'avoir les trois propriétés C, A et P.",
+    "domaine": "Distributed Systems",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Consistency",
+    "definition": "Propriété où tous les nœuds voient les mêmes données.",
+    "domaine": "Distributed Systems",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Availability",
+    "definition": "Propriété où le système répond toujours aux requêtes.",
+    "domaine": "Distributed Systems",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Partition Tolerance",
+    "definition": "Propriété où le système fonctionne malgré les pannes réseau.",
+    "domaine": "Distributed Systems",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Eventual Consistency",
+    "definition": "Modèle où tous les nœuds convergeront vers la même valeur.",
+    "domaine": "Distributed Systems",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Strong Consistency",
+    "definition": "Propriété garantissant que tous les nœuds voient les mêmes données.",
+    "domaine": "Distributed Systems",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Read Consistency",
+    "definition": "Garantie sur la fraîcheur des données lues.",
+    "domaine": "Distributed Systems",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Write Consistency",
+    "definition": "Garantie sur la réplication des données écrites.",
+    "domaine": "Distributed Systems",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Vector Clock",
+    "definition": "Mécanisme permettant d'ordonner les événements distribués.",
+    "domaine": "Distributed Systems",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Timestamp",
+    "definition": "Marqueur temporel identifiant quand un événement s'est produit.",
+    "domaine": "Programmation",
+    "niveau": "Débutant"
+  },
+  {
+    "mot": "Clock Synchronization",
+    "definition": "Synchronisation des horloges entre plusieurs machines.",
+    "domaine": "Distributed Systems",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "NTP",
+    "definition": "Network Time Protocol synchronisant les horloges sur le réseau.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Quorum",
+    "definition": "Nombre minimum de nœuds requis pour une décision.",
+    "domaine": "Distributed Systems",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Leader Election",
+    "definition": "Processus d'élection d'un nœud pour coordonner les autres.",
+    "domaine": "Distributed Systems",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Heartbeat",
+    "definition": "Message périodique indiquant qu'un processus est vivant.",
+    "domaine": "Distributed Systems",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Health Check",
+    "definition": "Vérification régulière de l'état d'une ressource.",
+    "domaine": "DevOps",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Liveness",
+    "definition": "Propriété qu'un système progressera vers un état final.",
+    "domaine": "Distributed Systems",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Safety",
+    "definition": "Propriété qu'un système ne produira pas de mauvais état.",
+    "domaine": "Distributed Systems",
+    "niveau": "Avancé"
+  },
+  {
+    "mot": "Idempotency",
+    "definition": "Propriété où une opération produit le même résultat répétée.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Atomicity",
+    "definition": "Propriété où une opération s'exécute entièrement ou pas du tout.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Isolation",
+    "definition": "Propriété où les opérations concurrentes ne s'interfèrent pas.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  },
+  {
+    "mot": "Durability",
+    "definition": "Propriété où les données confirmes ne se perdent pas.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire"
+  }
+]
