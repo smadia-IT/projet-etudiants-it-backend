@@ -163,5 +163,76 @@ async function creerNotification(userId, type, titre, message, lien) {
     }
 }
 
+// ============================================
+// CRON : Rappel d'inactivité 24h
+// ============================================
+async function envoyerRappelsInactivite() {
+    try {
+        // Trouver les utilisateurs inactifs depuis plus de 24h
+        // - Pas de rappel envoyé dans les dernières 24h
+        // - Au moins 1 ami OU 1 notif non lue (pour ne pas spammer les comptes vides)
+        const result = await pool.query(`
+            SELECT u.id, u.username
+            FROM utilisateurs u
+            WHERE u.derniere_activite < NOW() - INTERVAL '24 hours'
+              AND (u.dernier_rappel_envoye IS NULL 
+                   OR u.dernier_rappel_envoye < NOW() - INTERVAL '24 hours')
+              AND (
+                  EXISTS (
+                      SELECT 1 FROM amities a
+                      WHERE (a.user_id_1 = u.id OR a.user_id_2 = u.id)
+                        AND a.statut = 'acceptee'
+                  )
+                  OR EXISTS (
+                      SELECT 1 FROM notifications n
+                      WHERE n.user_id = u.id AND n.lu = 0
+                  )
+              )
+        `);
+        
+        console.log(`🔔 Rappels inactivité : ${result.rowCount} utilisateur(s) trouvé(s)`);
+        
+        for (const user of result.rows) {
+            await creerNotification(
+                user.id,
+                "rappel",
+                "👋 Tu nous manques !",
+                `Ça fait un moment qu'on ne t'a pas vu sur Étudiants IT. Reviens vite !`,
+                "index.html"
+            );
+            
+            // Marquer qu'on a envoyé un rappel
+            await pool.query(`
+                UPDATE utilisateurs 
+                SET dernier_rappel_envoye = CURRENT_TIMESTAMP 
+                WHERE id = $1
+            `, [user.id]);
+        }
+        
+        console.log(`✅ Rappels inactivité envoyés : ${result.rowCount}`);
+    } catch (erreur) {
+        console.error("❌ Erreur cron rappels inactivité:", erreur.message);
+    }
+}
+
+// ============================================
+// DÉMARRER LE CRON (toutes les heures)
+// ============================================
+function demarrerCronRappels() {
+    console.log("⏰ Cron rappels inactivité démarré (toutes les heures)");
+    
+    // Lancer une fois au démarrage (après 30 secondes pour laisser le serveur se stabiliser)
+    setTimeout(() => {
+        envoyerRappelsInactivite();
+    }, 30000);
+    
+    // Puis toutes les heures (3600000 ms)
+    setInterval(envoyerRappelsInactivite, 60 * 60 * 1000);
+}
+
 module.exports = router;
 module.exports.creerNotification = creerNotification;
+
+module.exports = router;
+module.exports.creerNotification = creerNotification;
+module.exports.demarrerCronRappels = demarrerCronRappels;

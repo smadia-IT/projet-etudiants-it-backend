@@ -115,9 +115,12 @@ async function demarrer() {
             console.log(`🚀 Serveur sur le port ${PORT}`);
             console.log(`📚 API Mots : http://localhost:${PORT}/api/mots`);
         });
+        
+        // ✅ Démarrer le cron des rappels (APRÈS app.listen)
+        routesNotifications.demarrerCronRappels();
     } catch (erreur) {
         console.error("❌ Erreur au démarrage:", erreur.message);
-        process.exit(1); // Arrêter le serveur si l'init échoue
+        process.exit(1);
     }
 }
 

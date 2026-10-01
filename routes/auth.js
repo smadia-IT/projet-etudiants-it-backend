@@ -199,6 +199,15 @@ function authMiddleware(req, res, next) {
     try {
         const decoded = jwt.verify(token, JWT_SECRET);
         req.user = decoded;
+
+        
+        // ✅ Mettre à jour la dernière activité (asynchrone, on n'attend pas)
+        const { pool } = require("../db/database");
+        pool.query(
+            "UPDATE utilisateurs SET derniere_activite = CURRENT_TIMESTAMP WHERE id = $1",
+            [decoded.id]
+        ).catch(err => console.error("Erreur update activité:", err.message));
+        
         next();
     } catch (erreur) {
         return res.status(401).json({
