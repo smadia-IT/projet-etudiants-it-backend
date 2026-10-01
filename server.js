@@ -101,7 +101,22 @@ app.get("/api/debug", (req, res) => {
 // ============================================
 // DÉMARRAGE
 // ============================================
-app.listen(PORT, () => {
-    console.log(`🚀 Serveur sur le port ${PORT}`);
-    console.log(`📚 API Mots : http://localhost:${PORT}/api/mots`);
-});
+async function demarrer() {
+    try {
+        console.log("🔧 Initialisation des tables...");
+        await initialiserTables();
+        
+        console.log("📚 Migration des données...");
+        await migrerDonnees();
+        
+        app.listen(PORT, () => {
+            console.log(`🚀 Serveur sur le port ${PORT}`);
+            console.log(`📚 API Mots : http://localhost:${PORT}/api/mots`);
+        });
+    } catch (erreur) {
+        console.error("❌ Erreur au démarrage:", erreur.message);
+        process.exit(1); // Arrêter le serveur si l'init échoue
+    }
+}
+
+demarrer();
