@@ -118,6 +118,32 @@ await pool.query(`
     ON conversations_cachees (user_id, autre_user_id)
 `);
 
+        // Table des notifications
+        await pool.query(`
+            CREATE TABLE IF NOT EXISTS notifications (
+                id SERIAL PRIMARY KEY,
+                user_id INTEGER NOT NULL REFERENCES utilisateurs(id) ON DELETE CASCADE,
+                type TEXT NOT NULL,
+                titre TEXT NOT NULL,
+                message TEXT,
+                lien TEXT,
+                lu INTEGER DEFAULT 0,
+                date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        `);
+
+        // Index pour accélérer la récupération des notifs d'un user
+        await pool.query(`
+            CREATE INDEX IF NOT EXISTS idx_notifications_user 
+            ON notifications (user_id, date DESC)
+        `);
+
+        // Index pour compter rapidement les non-lues
+        await pool.query(`
+            CREATE INDEX IF NOT EXISTS idx_notifications_non_lues 
+            ON notifications (user_id, lu)
+        `);
+
         console.log("✅ Tables initialisées (PostgreSQL)");
     } catch (erreur) {
         console.error("❌ Erreur initialisation tables:", erreur.message);

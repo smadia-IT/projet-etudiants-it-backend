@@ -17,6 +17,7 @@ const routesAmis = require("./routes/amis");
 const routesMessages = require("./routes/messages");
 const routesForum = require("./routes/forum");
 const routesChat = require("./routes/chat");
+const routesNotifications = require("./routes/notifications");
 
 // ============================================
 // MIDDLEWARE
@@ -86,6 +87,7 @@ app.use("/api/messages", routesMessages);
 // Routes pour le forum
 app.use("/api/forum", routesForum);
 app.use("/api/chat", routesChat);
+app.use("/api/notifications", routesNotifications);
 
 // ⚠️ ROUTE TEMPORAIRE DE DEBUG - À SUPPRIMER APRÈS
 app.get("/api/debug", (req, res) => {
