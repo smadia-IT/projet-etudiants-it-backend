@@ -268,7 +268,6 @@ router.post("/:userId", authMiddleware, async (req, res) => {
                 error: "Utilisateur introuvable" 
             });
         }
-
         // Insérer le message
         const insertResult = await pool.query(`
             INSERT INTO messages (expediteur_id, destinataire_id, contenu)
@@ -284,6 +283,25 @@ router.post("/:userId", authMiddleware, async (req, res) => {
             JOIN utilisateurs u ON u.id = m.expediteur_id
             WHERE m.id = $1
         `, [messageId]);
+
+        // ✅ CRÉER UNE NOTIFICATION POUR LE DESTINATAIRE
+        try {
+            const { creerNotification } = require("./notifications");
+            const apercu = contenu.trim().length > 50 
+                ? contenu.trim().substring(0, 50) + "..." 
+                : contenu.trim();
+            
+            await creerNotification(
+                autreId,                          // destinataire
+                "message",                        // type
+                `💬 Nouveau message de ${req.user.username}`,  // titre
+                apercu,                           // message
+                `messages.html?user=${monId}&username=${encodeURIComponent(req.user.username)}` // lien
+            );
+        } catch (notifErreur) {
+            console.error("Erreur création notif message:", notifErreur.message);
+            // On ne bloque pas l'envoi du message si la notif plante
+        }
 
         res.status(201).json({ 
             success: true, 
