@@ -6,6 +6,37 @@ const express = require("express");
 const router = express.Router();
 const { pool } = require("../db/database");
 const { authMiddleware } = require("./auth");
+// ============================================
+// DELETE /api/messages/conversations/:userId — Masquer une conversation
+// ============================================
+router.delete("/conversations/:userId", authMiddleware, async (req, res) => {
+    try {
+        const monId = req.user.id;
+        const autreId = parseInt(req.params.userId);
+
+        if (monId === autreId) {
+            return res.status(400).json({ 
+                success: false, 
+                error: "Impossible de masquer cette conversation" 
+            });
+        }
+
+        // Insérer ou mettre à jour le masquage
+        await pool.query(`
+            INSERT INTO conversations_cachees (user_id, autre_user_id, date_masquage)
+            VALUES ($1, $2, CURRENT_TIMESTAMP)
+            ON CONFLICT (user_id, autre_user_id)
+            DO UPDATE SET date_masquage = CURRENT_TIMESTAMP
+        `, [monId, autreId]);
+
+        res.json({ 
+            success: true, 
+            message: "Conversation masquée" 
+        });
+    } catch (erreur) {
+        res.status(500).json({ success: false, error: erreur.message });
+    }
+});
 
 // ============================================
 // GET /api/messages/conversations — Liste des conversations
@@ -14,7 +45,7 @@ router.get("/conversations", authMiddleware, async (req, res) => {
     try {
         const monId = req.user.id;
 
-        const conversationsResult = await pool.query(`
+               const conversationsResult = await pool.query(`
             SELECT 
                 u.id as user_id,
                 u.username,
@@ -38,6 +69,12 @@ router.get("/conversations", authMiddleware, async (req, res) => {
                 LIMIT 1
             )
             WHERE u.id != $1
+              AND NOT EXISTS (
+                  SELECT 1 FROM conversations_cachees cc
+                  WHERE cc.user_id = $1
+                    AND cc.autre_user_id = u.id
+                    AND cc.date_masquage > m.date
+              )
             ORDER BY m.date DESC
         `, [monId]);
 
@@ -104,6 +141,7 @@ router.get("/:userId/nouveaux", authMiddleware, async (req, res) => {
         res.status(500).json({ success: false, error: erreur.message });
     }
 });
+
 
 // ============================================
 // GET /api/messages/:userId — Messages avec un utilisateur (paginé)

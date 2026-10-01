@@ -103,6 +103,20 @@ async function initialiserTables() {
                 date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         `);
+        // Table des conversations cachées (suppression côté utilisateur)
+await pool.query(`
+    CREATE TABLE IF NOT EXISTS conversations_cachees (
+        id SERIAL PRIMARY KEY,
+        user_id INTEGER NOT NULL REFERENCES utilisateurs(id) ON DELETE CASCADE,
+        autre_user_id INTEGER NOT NULL REFERENCES utilisateurs(id) ON DELETE CASCADE,
+        date_masquage TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        UNIQUE(user_id, autre_user_id)
+    )
+`);
+await pool.query(`
+    CREATE INDEX IF NOT EXISTS idx_conversations_cachees 
+    ON conversations_cachees (user_id, autre_user_id)
+`);
 
         console.log("✅ Tables initialisées (PostgreSQL)");
     } catch (erreur) {
