@@ -6,6 +6,7 @@ const express = require("express");
 const router = express.Router();
 const { pool } = require("../db/database");
 const { authMiddleware } = require("./auth");
+const { creerNotification } = require("./notifications");
 
 // ============================================
 // POST /api/amis/demande/:userId — Envoyer une demande d'ami
@@ -24,7 +25,7 @@ router.post("/demande/:userId", authMiddleware, async (req, res) => {
 
         // Vérifier que l'autre utilisateur existe
         const autreUserResult = await pool.query(
-            "SELECT id FROM utilisateurs WHERE id = $1",
+            "SELECT id, username FROM utilisateurs WHERE id = $1",
             [autreId]
         );
 
@@ -68,6 +69,19 @@ router.post("/demande/:userId", authMiddleware, async (req, res) => {
             RETURNING id
         `, [monId, autreId]);
 
+        // ✅ Notifier le destinataire
+        try {
+            await creerNotification(
+                autreId,
+                "ami",
+                `👥 Nouvelle demande d'ami`,
+                `${req.user.username} veut être ton ami`,
+                `amis.html`
+            );
+        } catch (notifErreur) {
+            console.error("Erreur notif demande ami:", notifErreur.message);
+        }
+
         res.status(201).json({ 
             success: true, 
             message: "Demande envoyée", 
@@ -99,11 +113,26 @@ router.post("/accepter/:amitieId", authMiddleware, async (req, res) => {
             });
         }
 
+        const amitie = amitieResult.rows[0];
+
         await pool.query(`
             UPDATE amities 
             SET statut = 'acceptee', date_reponse = CURRENT_TIMESTAMP 
             WHERE id = $1
         `, [amitieId]);
+
+        // ✅ Notifier l'expéditeur initial que sa demande est acceptée
+        try {
+            await creerNotification(
+                amitie.user_id_1,
+                "ami",
+                `✅ Demande d'ami acceptée`,
+                `${req.user.username} a accepté ta demande d'ami`,
+                `amis.html`
+            );
+        } catch (notifErreur) {
+            console.error("Erreur notif acceptation ami:", notifErreur.message);
+        }
 
         res.json({ success: true, message: "Demande acceptée" });
     } catch (erreur) {
