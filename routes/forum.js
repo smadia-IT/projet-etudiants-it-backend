@@ -6,6 +6,7 @@ const express = require("express");
 const router = express.Router();
 const { pool } = require("../db/database");
 const { authMiddleware } = require("./auth");
+const { creerNotification } = require("./notifications");
 
 // ============================================
 // GET /api/forum/posts — Liste des sujets
@@ -48,7 +49,6 @@ router.get("/posts", async (req, res) => {
         
         const result = await pool.query(query, params);
         
-        // Convertir nb_commentaires en entier
         const postsAvecApercu = result.rows.map(p => ({
             ...p,
             nb_commentaires: parseInt(p.nb_commentaires),
@@ -93,7 +93,6 @@ router.get("/posts/:id", async (req, res) => {
             });
         }
         
-        // Récupérer les commentaires
         const commentairesResult = await pool.query(`
             SELECT 
                 c.*,
@@ -193,9 +192,9 @@ router.post("/posts/:id/commentaires", authMiddleware, async (req, res) => {
             });
         }
         
-        // Vérifier que le post existe
+        // Vérifier que le post existe ET récupérer son auteur + titre
         const postResult = await pool.query(
-            "SELECT id FROM posts WHERE id = $1",
+            "SELECT id, user_id, titre FROM posts WHERE id = $1",
             [postId]
         );
         
@@ -205,6 +204,8 @@ router.post("/posts/:id/commentaires", authMiddleware, async (req, res) => {
                 error: "Sujet introuvable" 
             });
         }
+        
+        const post = postResult.rows[0];
         
         const insertResult = await pool.query(`
             INSERT INTO commentaires (post_id, user_id, contenu)
@@ -220,6 +221,29 @@ router.post("/posts/:id/commentaires", authMiddleware, async (req, res) => {
             JOIN utilisateurs u ON u.id = c.user_id
             WHERE c.id = $1
         `, [commentaireId]);
+        
+        // ✅ Notifier l'auteur du sujet (SAUF si c'est lui-même qui commente)
+        try {
+            if (post.user_id !== monId) {
+                const apercu = contenu.trim().length > 60 
+                    ? contenu.trim().substring(0, 60) + "..." 
+                    : contenu.trim();
+                
+                const titreTronque = post.titre.length > 40 
+                    ? post.titre.substring(0, 40) + "..." 
+                    : post.titre;
+                
+                await creerNotification(
+                    post.user_id,
+                    "forum",
+                    `📝 Nouveau commentaire sur ton sujet`,
+                    `${req.user.username} a répondu à "${titreTronque}" : ${apercu}`,
+                    `sujet.html?id=${postId}`
+                );
+            }
+        } catch (notifErreur) {
+            console.error("Erreur notif commentaire forum:", notifErreur.message);
+        }
         
         res.status(201).json({ 
             success: true, 
