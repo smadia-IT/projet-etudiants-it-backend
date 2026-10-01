@@ -10,9 +10,9 @@ const path = require("path");
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: { rejectUnauthorized: false },
-    max: 10,                              // Limite de connexions
-    idleTimeoutMillis: 30000,             // Fermer les connexions inactives après 30s
-    connectionTimeoutMillis: 10000        // Timeout de connexion : 10s
+    max: 10,
+    idleTimeoutMillis: 30000,
+    connectionTimeoutMillis: 10000
 });
 
 // ============================================
@@ -67,6 +67,18 @@ async function initialiserTables() {
                 lu INTEGER DEFAULT 0,
                 date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
+        `);
+
+        // Index pour accélérer les recherches de messages entre 2 utilisateurs
+        await pool.query(`
+            CREATE INDEX IF NOT EXISTS idx_messages_conversation 
+            ON messages (expediteur_id, destinataire_id, date DESC)
+        `);
+
+        // Index pour accélérer le comptage des messages non lus
+        await pool.query(`
+            CREATE INDEX IF NOT EXISTS idx_messages_non_lus 
+            ON messages (destinataire_id, lu)
         `);
 
         // Table des posts (forum)

@@ -74,12 +74,48 @@ router.get("/non-lus/count", authMiddleware, async (req, res) => {
 });
 
 // ============================================
-// GET /api/messages/:userId — Messages avec un utilisateur
+// GET /api/messages/:userId/nouveaux — Messages après un certain ID
+// ⚠️ DOIT ÊTRE PLACÉE AVANT /:userId
+// ============================================
+router.get("/:userId/nouveaux", authMiddleware, async (req, res) => {
+    try {
+        const monId = req.user.id;
+        const autreId = parseInt(req.params.userId);
+        const after = parseInt(req.query.after) || 0;
+
+        const result = await pool.query(`
+            SELECT 
+                m.*,
+                u.username as expediteur_username
+            FROM messages m
+            JOIN utilisateurs u ON u.id = m.expediteur_id
+            WHERE ((m.expediteur_id = $1 AND m.destinataire_id = $2)
+                OR (m.expediteur_id = $2 AND m.destinataire_id = $1))
+              AND m.id > $3
+            ORDER BY m.date ASC
+        `, [monId, autreId, after]);
+
+        res.json({ 
+            success: true, 
+            count: result.rowCount, 
+            data: result.rows 
+        });
+    } catch (erreur) {
+        res.status(500).json({ success: false, error: erreur.message });
+    }
+});
+
+// ============================================
+// GET /api/messages/:userId — Messages avec un utilisateur (paginé)
 // ============================================
 router.get("/:userId", authMiddleware, async (req, res) => {
     try {
         const monId = req.user.id;
         const autreId = parseInt(req.params.userId);
+
+        // Paramètres de pagination
+        const limit = Math.min(parseInt(req.query.limit) || 30, 100); // max 100
+        const before = req.query.before ? parseInt(req.query.before) : null;
 
         // Vérifier que l'autre utilisateur existe
         const autreUserResult = await pool.query(
@@ -96,22 +132,55 @@ router.get("/:userId", authMiddleware, async (req, res) => {
             });
         }
 
-        // Récupérer tous les messages échangés
-        const messagesResult = await pool.query(`
-            SELECT 
-                m.*,
-                u.username as expediteur_username
-            FROM messages m
-            JOIN utilisateurs u ON u.id = m.expediteur_id
-            WHERE (m.expediteur_id = $1 AND m.destinataire_id = $2)
-               OR (m.expediteur_id = $2 AND m.destinataire_id = $1)
-            ORDER BY m.date ASC
-        `, [monId, autreId, autreId, monId]);
+        // Construire la requête avec ou sans pagination
+        let query;
+        let params;
+
+        if (before) {
+            // Charger les messages AVANT un certain ID (pour le scroll infini)
+            query = `
+                SELECT 
+                    m.*,
+                    u.username as expediteur_username
+                FROM messages m
+                JOIN utilisateurs u ON u.id = m.expediteur_id
+                WHERE ((m.expediteur_id = $1 AND m.destinataire_id = $2)
+                    OR (m.expediteur_id = $2 AND m.destinataire_id = $1))
+                  AND m.id < $3
+                ORDER BY m.date DESC
+                LIMIT $4
+            `;
+            params = [monId, autreId, before, limit];
+        } else {
+            // Charger les derniers messages
+            query = `
+                SELECT 
+                    m.*,
+                    u.username as expediteur_username
+                FROM messages m
+                JOIN utilisateurs u ON u.id = m.expediteur_id
+                WHERE ((m.expediteur_id = $1 AND m.destinataire_id = $2)
+                    OR (m.expediteur_id = $2 AND m.destinataire_id = $1))
+                ORDER BY m.date DESC
+                LIMIT $3
+            `;
+            params = [monId, autreId, limit];
+        }
+
+        const messagesResult = await pool.query(query, params);
+
+        // On a récupéré du plus récent au plus ancien → on inverse pour l'affichage
+        const messages = messagesResult.rows.reverse();
+
+        // Savoir s'il y a plus de messages à charger
+        const hasMore = messagesResult.rowCount === limit;
 
         res.json({ 
             success: true, 
-            count: messagesResult.rowCount, 
-            data: messagesResult.rows,
+            count: messages.length,
+            data: messages,
+            has_more: hasMore,
+            plus_ancien_id: messages.length > 0 ? messages[0].id : null,
             autre_utilisateur: autreUser
         });
     } catch (erreur) {
