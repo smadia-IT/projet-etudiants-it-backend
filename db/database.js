@@ -185,6 +185,24 @@ await pool.query(`
             ALTER TABLE utilisateurs 
             ADD COLUMN IF NOT EXISTS avatar_url TEXT
         `);
+
+                // ✅ Table des abonnements aux notifications push
+        await pool.query(`
+            CREATE TABLE IF NOT EXISTS push_subscriptions (
+                id SERIAL PRIMARY KEY,
+                user_id INTEGER NOT NULL REFERENCES utilisateurs(id) ON DELETE CASCADE,
+                endpoint TEXT NOT NULL UNIQUE,
+                p256dh TEXT NOT NULL,
+                auth TEXT NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        `);
+
+        // Index pour accélérer la récupération des abonnements d'un user
+        await pool.query(`
+            CREATE INDEX IF NOT EXISTS idx_push_user 
+            ON push_subscriptions (user_id)
+        `);
         console.log("✅ Tables initialisées (PostgreSQL)");
     } catch (erreur) {
         console.error("❌ Erreur initialisation tables:", erreur.message);
