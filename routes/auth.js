@@ -190,7 +190,8 @@ router.post("/login", async (req, res) => {
                 email: user.email,
                 prenom: user.prenom,
                 nom: user.nom,
-                telephone: user.telephone
+                telephone: user.telephone,
+                avatar_url: user.avatar_url
             },
             profil_complet: !!profilComplet
         });
@@ -264,7 +265,7 @@ router.post("/completer-profil", authMiddleware, async (req, res) => {
 router.get("/me", authMiddleware, async (req, res) => {
     try {
         const userResult = await pool.query(
-            "SELECT id, username, email, prenom, nom, telephone, created_at FROM utilisateurs WHERE id = $1",
+            "SELECT id, username, email, prenom, nom, telephone, avatar_url, created_at FROM utilisateurs WHERE id = $1",
             [req.user.id]
         );
 
