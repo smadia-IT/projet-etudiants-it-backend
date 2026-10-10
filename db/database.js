@@ -175,6 +175,11 @@ await pool.query(`
             ON notifications (user_id, lu)
         `);
 
+                // ✅ Colonne avatar_url pour la photo de profil
+        await pool.query(`
+            ALTER TABLE utilisateurs 
+            ADD COLUMN IF NOT EXISTS avatar_url TEXT
+        `);
         console.log("✅ Tables initialisées (PostgreSQL)");
     } catch (erreur) {
         console.error("❌ Erreur initialisation tables:", erreur.message);
