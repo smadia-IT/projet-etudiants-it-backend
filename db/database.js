@@ -33,20 +33,38 @@ async function initialiserTables() {
             )
         `);
 
-               // Table des utilisateurs
+                      // Table des utilisateurs
         await pool.query(`
             CREATE TABLE IF NOT EXISTS utilisateurs (
                 id SERIAL PRIMARY KEY,
                 username TEXT NOT NULL UNIQUE,
                 email TEXT NOT NULL UNIQUE,
                 password TEXT NOT NULL,
+                prenom TEXT,
+                nom TEXT,
+                telephone TEXT,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 derniere_activite TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 dernier_rappel_envoye TIMESTAMP
             )
         `);
 
-                // ✅ MIGRATION : ajouter les colonnes si elles n'existent pas
+        // ✅ MIGRATION : ajouter les colonnes si elles n'existent pas (utilisateurs existants)
+        await pool.query(`
+            ALTER TABLE utilisateurs 
+            ADD COLUMN IF NOT EXISTS prenom TEXT
+        `);
+        
+        await pool.query(`
+            ALTER TABLE utilisateurs 
+            ADD COLUMN IF NOT EXISTS nom TEXT
+        `);
+        
+        await pool.query(`
+            ALTER TABLE utilisateurs 
+            ADD COLUMN IF NOT EXISTS telephone TEXT
+        `);
+        
         await pool.query(`
             ALTER TABLE utilisateurs 
             ADD COLUMN IF NOT EXISTS derniere_activite TIMESTAMP DEFAULT CURRENT_TIMESTAMP
