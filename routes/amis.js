@@ -184,7 +184,9 @@ router.get("/", authMiddleware, async (req, res) => {
                 a.id as amitie_id,
                 u.id,
                 u.username,
-                u.email,
+                u.prenom,
+                u.nom,
+                u.avatar_url,
                 a.date_reponse
             FROM amities a
             JOIN utilisateurs u ON (
@@ -192,7 +194,7 @@ router.get("/", authMiddleware, async (req, res) => {
                 (a.user_id_2 = $1 AND u.id = a.user_id_1)
             )
             WHERE a.statut = 'acceptee'
-            ORDER BY u.username ASC
+            ORDER BY u.prenom ASC NULLS LAST, u.username ASC
        `, [monId]);
         res.json({ 
             success: true, 
@@ -217,7 +219,8 @@ router.get("/demandes", authMiddleware, async (req, res) => {
                 a.date_demande,
                 u.id as user_id,
                 u.username,
-                u.email
+                u.prenom,
+                u.nom
             FROM amities a
             JOIN utilisateurs u ON u.id = a.user_id_1
             WHERE a.user_id_2 = $1 AND a.statut = 'en_attente'
@@ -233,7 +236,6 @@ router.get("/demandes", authMiddleware, async (req, res) => {
         res.status(500).json({ success: false, error: erreur.message });
     }
 });
-
 // ============================================
 // GET /api/amis/envoyees — Demandes envoyées (en attente)
 // ============================================
@@ -246,7 +248,9 @@ router.get("/envoyees", authMiddleware, async (req, res) => {
                 a.id as amitie_id,
                 a.date_demande,
                 u.id as user_id,
-                u.username
+                u.username,
+                u.prenom,
+                u.nom
             FROM amities a
             JOIN utilisateurs u ON u.id = a.user_id_2
             WHERE a.user_id_1 = $1 AND a.statut = 'en_attente'
