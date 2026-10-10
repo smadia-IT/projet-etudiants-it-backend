@@ -154,10 +154,19 @@ router.delete("/:id", authMiddleware, async (req, res) => {
 // ============================================
 async function creerNotification(userId, type, titre, message, lien) {
     try {
+        // 1. Créer la notification en base
         await pool.query(`
             INSERT INTO notifications (user_id, type, titre, message, lien)
             VALUES ($1, $2, $3, $4, $5)
         `, [userId, type, titre, message, lien]);
+
+        // 2. ✅ Envoyer un push en parallèle (ne bloque pas si erreur)
+        try {
+            const { envoyerPush } = require("./push");
+            await envoyerPush(userId, titre, message, lien || "/");
+        } catch (pushErreur) {
+            console.error("Erreur push (non bloquant):", pushErreur.message);
+        }
     } catch (erreur) {
         console.error("Erreur création notification:", erreur.message);
     }
