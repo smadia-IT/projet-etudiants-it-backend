@@ -8,6 +8,43 @@ const { pool } = require("../db/database");
 const { authMiddleware } = require("./auth");
 
 // ============================================
+// POST /api/utilisateurs/avatar — Uploader une photo de profil
+// ============================================
+router.post("/avatar", authMiddleware, filestack({
+    uploadUrl: process.env.FILESTACK_UPLOAD_URL,
+    omitHeaders: ["authorization", "content-type"] // On ne veut pas envoyer nos headers d'auth à Filestack [citation:1]
+}), async (req, res) => {
+    try {
+        let data;
+        try {
+            // La réponse de Filestack est un string JSON [citation:1]
+            data = JSON.parse(res.filestack);
+        } catch (e) {
+            // En cas d'erreur (mauvaise clé API, limite atteinte), on renvoie l'erreur brute [citation:1]
+            return res.status(400).json({ success: false, error: "Erreur lors de l'upload", details: res.filestack });
+        }
+
+        if (!data.url) {
+            return res.status(500).json({ success: false, error: "Filestack n'a pas renvoyé d'URL" });
+        }
+
+        // Mettre à jour l'utilisateur dans la base de données
+        await pool.query(
+            "UPDATE utilisateurs SET avatar_url = $1 WHERE id = $2",
+            [data.url, req.user.id]
+        );
+
+        res.json({
+            success: true,
+            message: "Photo mise à jour",
+            avatar_url: data.url
+        });
+
+    } catch (erreur) {
+        res.status(500).json({ success: false, error: erreur.message });
+    }
+});
+// ============================================
 // GET /api/utilisateurs — Liste tous les utilisateurs (sauf moi)
 // ============================================
 router.get("/", authMiddleware, async (req, res) => {
@@ -63,6 +100,8 @@ router.get("/", authMiddleware, async (req, res) => {
         res.status(500).json({ success: false, error: erreur.message });
     }
 });
+
+
 
 // ============================================
 // GET /api/utilisateurs/recherche/:texte — Rechercher un utilisateur
