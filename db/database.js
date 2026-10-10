@@ -74,6 +74,11 @@ async function initialiserTables() {
             ALTER TABLE utilisateurs 
             ADD COLUMN IF NOT EXISTS dernier_rappel_envoye TIMESTAMP
         `);
+                // ✅ Colonne avatar_url pour la photo de profil
+        await pool.query(`
+            ALTER TABLE utilisateurs 
+            ADD COLUMN IF NOT EXISTS avatar_url TEXT
+        `);
 
         // Table des amitiés
         await pool.query(`
