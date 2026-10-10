@@ -24,6 +24,9 @@ router.get("/posts", async (req, res) => {
                 p.date,
                 u.id as user_id,
                 u.username,
+                u.prenom,
+                u.nom,
+                u.avatar_url,
                 (SELECT COUNT(*) FROM commentaires c WHERE c.post_id = p.id) as nb_commentaires
             FROM posts p
             JOIN utilisateurs u ON u.id = p.user_id
@@ -78,7 +81,10 @@ router.get("/posts/:id", async (req, res) => {
             SELECT 
                 p.*,
                 u.id as user_id,
-                u.username
+                u.username,
+                u.prenom,
+                u.nom,
+                u.avatar_url
             FROM posts p
             JOIN utilisateurs u ON u.id = p.user_id
             WHERE p.id = $1
@@ -97,7 +103,10 @@ router.get("/posts/:id", async (req, res) => {
             SELECT 
                 c.*,
                 u.id as user_id,
-                u.username
+                u.username,
+                u.prenom,
+                u.nom,
+                u.avatar_url
             FROM commentaires c
             JOIN utilisateurs u ON u.id = c.user_id
             WHERE c.post_id = $1

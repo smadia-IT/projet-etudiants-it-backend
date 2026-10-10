@@ -180,7 +180,7 @@ router.get("/", authMiddleware, async (req, res) => {
         const monId = req.user.id;
 
         const amisResult = await pool.query(`
-            SELECT 
+                        SELECT 
                 a.id as amitie_id,
                 u.id,
                 u.username,
@@ -214,13 +214,14 @@ router.get("/demandes", authMiddleware, async (req, res) => {
         const monId = req.user.id;
 
         const demandesResult = await pool.query(`
-            SELECT 
+                       SELECT 
                 a.id as amitie_id,
                 a.date_demande,
                 u.id as user_id,
                 u.username,
                 u.prenom,
-                u.nom
+                u.nom,
+                u.avatar_url
             FROM amities a
             JOIN utilisateurs u ON u.id = a.user_id_1
             WHERE a.user_id_2 = $1 AND a.statut = 'en_attente'
@@ -244,13 +245,14 @@ router.get("/envoyees", authMiddleware, async (req, res) => {
         const monId = req.user.id;
 
         const demandesResult = await pool.query(`
-            SELECT 
+                       SELECT 
                 a.id as amitie_id,
                 a.date_demande,
                 u.id as user_id,
                 u.username,
                 u.prenom,
-                u.nom
+                u.nom,
+                u.avatar_url
             FROM amities a
             JOIN utilisateurs u ON u.id = a.user_id_2
             WHERE a.user_id_1 = $1 AND a.statut = 'en_attente'

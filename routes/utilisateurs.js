@@ -53,7 +53,7 @@ router.get("/", authMiddleware, async (req, res) => {
         const userId = req.user.id;
         
         const utilisateursResult = await pool.query(`
-            SELECT id, username, email, created_at 
+            SELECT id, username, prenom, nom, avatar_url, created_at 
             FROM utilisateurs 
             WHERE id != $1 
             ORDER BY username ASC
@@ -113,9 +113,9 @@ router.get("/recherche/:texte", authMiddleware, async (req, res) => {
         const texte = `%${req.params.texte}%`;
 
         const result = await pool.query(`
-            SELECT id, username, email 
+            SELECT id, username, prenom, nom, avatar_url 
             FROM utilisateurs 
-            WHERE (username ILIKE $1 OR email ILIKE $1) AND id != $2
+            WHERE (username ILIKE $1 OR prenom ILIKE $1 OR nom ILIKE $1 OR email ILIKE $1) AND id != $2
             ORDER BY username ASC
         `, [texte, userId]);
 
@@ -138,7 +138,7 @@ router.get("/:id", authMiddleware, async (req, res) => {
         const monId = req.user.id;
         
         const utilisateurResult = await pool.query(
-            "SELECT id, username, email, created_at FROM utilisateurs WHERE id = $1",
+            "SELECT id, username, prenom, nom, avatar_url, created_at FROM utilisateurs WHERE id = $1",
             [id]
         );
 
@@ -198,7 +198,7 @@ router.get("/:id", authMiddleware, async (req, res) => {
 
         // Liste d'amis
         const amisResult = await pool.query(`
-            SELECT u.id, u.username
+            SELECT u.id, u.username, u.prenom, u.nom, u.avatar_url
             FROM amities a
             JOIN utilisateurs u ON (
                 (a.user_id_1 = $1 AND u.id = a.user_id_2) OR 
