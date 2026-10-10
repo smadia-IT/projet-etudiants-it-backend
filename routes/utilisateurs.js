@@ -4,6 +4,7 @@
 
 const express = require("express");
 const router = express.Router();
+const filestack = require("express-filestack");   // ← L'IMPORT
 const { pool } = require("../db/database");
 const { authMiddleware } = require("./auth");
 
