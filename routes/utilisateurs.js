@@ -4,44 +4,85 @@
 
 const express = require("express");
 const router = express.Router();
-const filestack = require("express-filestack");   // ← L'IMPORT
+const multer = require("multer");
+const { createClient } = require("@supabase/supabase-js");
 const { pool } = require("../db/database");
 const { authMiddleware } = require("./auth");
 
 // ============================================
+// CONFIG SUPABASE
+// ============================================
+const supabase = createClient(
+    process.env.SUPABASE_URL,
+    process.env.SUPABASE_SERVICE_KEY
+);
+
+// Multer en mémoire (limite 5 Mo)
+const upload = multer({
+    storage: multer.memoryStorage(),
+    limits: { fileSize: 5 * 1024 * 1024 },
+    fileFilter: (req, file, cb) => {
+        if (file.mimetype.startsWith("image/")) {
+            cb(null, true);
+        } else {
+            cb(new Error("Seules les images sont autorisées"));
+        }
+    }
+});
+
+// ============================================
 // POST /api/utilisateurs/avatar — Uploader une photo de profil
 // ============================================
-router.post("/avatar", authMiddleware, filestack({
-    uploadUrl: process.env.FILESTACK_UPLOAD_URL,
-    omitHeaders: ["authorization", "content-type"] // On ne veut pas envoyer nos headers d'auth à Filestack [citation:1]
-}), async (req, res) => {
+router.post("/avatar", authMiddleware, upload.single("avatar"), async (req, res) => {
     try {
-        let data;
-        try {
-            // La réponse de Filestack est un string JSON [citation:1]
-            data = JSON.parse(res.filestack);
-        } catch (e) {
-            // En cas d'erreur (mauvaise clé API, limite atteinte), on renvoie l'erreur brute [citation:1]
-            return res.status(400).json({ success: false, error: "Erreur lors de l'upload", details: res.filestack });
+        if (!req.file) {
+            return res.status(400).json({
+                success: false,
+                error: "Aucune image fournie"
+            });
         }
 
-        if (!data.url) {
-            return res.status(500).json({ success: false, error: "Filestack n'a pas renvoyé d'URL" });
+        // Récupérer l'extension du fichier
+        const extension = req.file.originalname.split(".").pop().toLowerCase();
+        const nomFichier = `user_${req.user.id}_${Date.now()}.${extension}`;
+
+        // Upload vers Supabase Storage
+        const { data: uploadData, error: uploadError } = await supabase.storage
+            .from("avatars")
+            .upload(nomFichier, req.file.buffer, {
+                contentType: req.file.mimetype,
+                upsert: true
+            });
+
+        if (uploadError) {
+            console.error("Erreur Supabase upload:", uploadError);
+            return res.status(500).json({
+                success: false,
+                error: "Erreur lors de l'upload : " + uploadError.message
+            });
         }
 
-        // Mettre à jour l'utilisateur dans la base de données
+        // Récupérer l'URL publique
+        const { data: urlData } = supabase.storage
+            .from("avatars")
+            .getPublicUrl(nomFichier);
+
+        const urlPublique = urlData.publicUrl;
+
+        // Mettre à jour l'utilisateur en base
         await pool.query(
             "UPDATE utilisateurs SET avatar_url = $1 WHERE id = $2",
-            [data.url, req.user.id]
+            [urlPublique, req.user.id]
         );
 
         res.json({
             success: true,
             message: "Photo mise à jour",
-            avatar_url: data.url
+            avatar_url: urlPublique
         });
 
     } catch (erreur) {
+        console.error("Erreur avatar:", erreur);
         res.status(500).json({ success: false, error: erreur.message });
     }
 });
