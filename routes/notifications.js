@@ -241,7 +241,4 @@ function demarrerCronRappels() {
 
 module.exports = router;
 module.exports.creerNotification = creerNotification;
-
-module.exports = router;
-module.exports.creerNotification = creerNotification;
 module.exports.demarrerCronRappels = demarrerCronRappels;
