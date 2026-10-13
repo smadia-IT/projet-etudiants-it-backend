@@ -19,6 +19,7 @@ const routesForum = require("./routes/forum");
 const routesChat = require("./routes/chat");
 const routesNotifications = require("./routes/notifications");
 const routesPush = require("./routes/push");
+const routesCoffres = require("./routes/coffres");
 
 // ============================================
 // MIDDLEWARE
@@ -90,6 +91,7 @@ app.use("/api/forum", routesForum);
 app.use("/api/chat", routesChat);
 app.use("/api/notifications", routesNotifications);
 app.use("/api/push", routesPush);
+app.use("/api/coffres", routesCoffres);
 
 // ⚠️ ROUTE TEMPORAIRE DE DEBUG - À SUPPRIMER APRÈS
 app.get("/api/debug", (req, res) => {

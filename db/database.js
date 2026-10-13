@@ -203,6 +203,39 @@ await pool.query(`
             CREATE INDEX IF NOT EXISTS idx_push_user 
             ON push_subscriptions (user_id)
         `);
+                // ✅ MIGRATION : colonnes pour les coffres quotidiens
+        await pool.query(`
+            ALTER TABLE utilisateurs 
+            ADD COLUMN IF NOT EXISTS points INTEGER DEFAULT 0
+        `);
+        
+        await pool.query(`
+            ALTER TABLE utilisateurs 
+            ADD COLUMN IF NOT EXISTS streak_coffres INTEGER DEFAULT 0
+        `);
+        
+        await pool.query(`
+            ALTER TABLE utilisateurs 
+            ADD COLUMN IF NOT EXISTS dernier_coffre TIMESTAMP
+        `);
+
+        // ✅ Table des coffres ouverts (historique)
+        await pool.query(`
+            CREATE TABLE IF NOT EXISTS coffres_quotidiens (
+                id SERIAL PRIMARY KEY,
+                user_id INTEGER NOT NULL REFERENCES utilisateurs(id) ON DELETE CASCADE,
+                jour_streak INTEGER NOT NULL,
+                points_gagnes INTEGER NOT NULL,
+                recompense_type TEXT,
+                recompense_valeur TEXT,
+                date_ouverture TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        `);
+
+        await pool.query(`
+            CREATE INDEX IF NOT EXISTS idx_coffres_user 
+            ON coffres_quotidiens (user_id, date_ouverture DESC)
+        `);
         console.log("✅ Tables initialisées (PostgreSQL)");
     } catch (erreur) {
         console.error("❌ Erreur initialisation tables:", erreur.message);
