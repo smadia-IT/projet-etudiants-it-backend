@@ -4,8 +4,22 @@
 
 const express = require("express");
 const router = express.Router();
+const multer = require("multer");
+const { createClient } = require("@supabase/supabase-js");
 const { pool } = require("../db/database");
 const { authMiddleware } = require("./auth");
+
+// Config Supabase
+const supabase = createClient(
+    process.env.SUPABASE_URL,
+    process.env.SUPABASE_SERVICE_KEY
+);
+
+// Multer en mémoire (max 5 Mo)
+const uploadAudio = multer({
+    storage: multer.memoryStorage(),
+    limits: { fileSize: 5 * 1024 * 1024 }
+});
 // ============================================
 // DELETE /api/messages/conversations/:userId — Masquer une conversation
 // ============================================
@@ -222,6 +236,108 @@ router.get("/:userId", authMiddleware, async (req, res) => {
             autre_utilisateur: autreUser
         });
     } catch (erreur) {
+        res.status(500).json({ success: false, error: erreur.message });
+    }
+});
+
+// ============================================
+// POST /api/messages/:userId/audio — Envoyer un message vocal
+// ============================================
+router.post("/:userId/audio", authMiddleware, uploadAudio.single("audio"), async (req, res) => {
+    try {
+        const monId = req.user.id;
+        const autreId = parseInt(req.params.userId);
+
+        if (!req.file) {
+            return res.status(400).json({
+                success: false,
+                error: "Aucun fichier audio fourni"
+            });
+        }
+
+        if (monId === autreId) {
+            return res.status(400).json({
+                success: false,
+                error: "Tu ne peux pas t'envoyer un message"
+            });
+        }
+
+        // Vérifier que l'autre utilisateur existe
+        const autreUserResult = await pool.query(
+            "SELECT id, username FROM utilisateurs WHERE id = $1",
+            [autreId]
+        );
+
+        if (autreUserResult.rowCount === 0) {
+            return res.status(404).json({
+                success: false,
+                error: "Utilisateur introuvable"
+            });
+        }
+
+        // Upload vers Supabase Storage
+        const extension = req.file.mimetype.includes("webm") ? "webm" : 
+                          req.file.mimetype.includes("ogg") ? "ogg" : "mp4";
+        const nomFichier = `msg_${monId}_${Date.now()}.${extension}`;
+
+        const { error: uploadError } = await supabase.storage
+            .from("voice-messages")
+            .upload(nomFichier, req.file.buffer, {
+                contentType: req.file.mimetype,
+                upsert: false
+            });
+
+        if (uploadError) {
+            console.error("Erreur upload audio:", uploadError);
+            return res.status(500).json({
+                success: false,
+                error: "Erreur lors de l'upload : " + uploadError.message
+            });
+        }
+
+        // Récupérer l'URL publique
+        const { data: urlData } = supabase.storage
+            .from("voice-messages")
+            .getPublicUrl(nomFichier);
+
+        const audioUrl = urlData.publicUrl;
+
+        // Insérer le message en base
+        const insertResult = await pool.query(`
+            INSERT INTO messages (expediteur_id, destinataire_id, contenu, audio_url)
+            VALUES ($1, $2, $3, $4)
+            RETURNING id
+        `, [monId, autreId, "", audioUrl]);
+
+        const messageId = insertResult.rows[0].id;
+
+        const messageResult = await pool.query(`
+            SELECT m.*, u.username as expediteur_username
+            FROM messages m
+            JOIN utilisateurs u ON u.id = m.expediteur_id
+            WHERE m.id = $1
+        `, [messageId]);
+
+        // Créer une notification
+        try {
+            const { creerNotification } = require("./notifications");
+            await creerNotification(
+                autreId,
+                "message",
+                `🎤 Message vocal de ${req.user.username}`,
+                "Nouveau message vocal",
+                `messages.html?user=${monId}&username=${encodeURIComponent(req.user.username)}`
+            );
+        } catch (e) {
+            console.error("Erreur notif vocal:", e.message);
+        }
+
+        res.status(201).json({
+            success: true,
+            data: messageResult.rows[0]
+        });
+    } catch (erreur) {
+        console.error("Erreur message vocal:", erreur);
         res.status(500).json({ success: false, error: erreur.message });
     }
 });

@@ -99,12 +99,18 @@ async function initialiserTables() {
                 id SERIAL PRIMARY KEY,
                 expediteur_id INTEGER NOT NULL REFERENCES utilisateurs(id) ON DELETE CASCADE,
                 destinataire_id INTEGER NOT NULL REFERENCES utilisateurs(id) ON DELETE CASCADE,
-                contenu TEXT NOT NULL,
+                contenu TEXT,
                 lu INTEGER DEFAULT 0,
+                audio_url TEXT,
                 date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         `);
 
+                // ✅ MIGRATION : colonne audio_url si elle n'existe pas
+        await pool.query(`
+            ALTER TABLE messages 
+            ADD COLUMN IF NOT EXISTS audio_url TEXT
+        `);
         // Index pour accélérer les recherches de messages entre 2 utilisateurs
         await pool.query(`
             CREATE INDEX IF NOT EXISTS idx_messages_conversation 
