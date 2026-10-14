@@ -40,10 +40,23 @@ INSTRUCTIONS STRICTES :
 
 Réponds toujours en français.`;
 
+async function appelerGemini(prompt) {
+    const tentatives = 3;
+    for (let i = 1; i <= tentatives; i++) {
+        try {
+            return await appelerGeminiUnefois(prompt);
+        } catch (erreur) {
+            const surcharge = /high demand|overloaded|503|429/i.test(erreur.message);
+            if (!surcharge || i === tentatives) throw erreur;
+            // Attente croissante : 1 s, puis 2 s
+            await new Promise(r => setTimeout(r, 1000 * i));
+        }
+    }
+}
 // ============================================
 // FONCTION : APPEL GEMINI
 // ============================================
-function appelerGemini(prompt) {
+function appelerGeminiUnefois(prompt) {
     return new Promise((resolve, reject) => {
         const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${GEMINI_API_KEY}`;
         
