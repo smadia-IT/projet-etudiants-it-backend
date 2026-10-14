@@ -10,7 +10,7 @@ const router = express.Router();
 const https = require("https");
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const MODEL = "gemini-4.O-flash";
+const MODEL = "gemini-2.5-flash-lite";
 
 // ============================================
 // PROMPT SYSTÈME
