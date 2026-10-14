@@ -7,6 +7,13 @@ const router = express.Router();
 const { pool } = require("../db/database");
 const { authMiddleware } = require("./auth");
 const { creerNotification } = require("./notifications");
+const DOMAINES_AUTORISES = [
+    "Programmation",
+    "Réseau",
+    "Cybersécurité",
+    "Base de données",
+    "Autre"
+];
 
 // ============================================
 // GET /api/forum/posts — Liste des sujets
@@ -151,6 +158,12 @@ router.post("/posts", authMiddleware, async (req, res) => {
             return res.status(400).json({ 
                 success: false, 
                 error: "Le contenu doit faire entre 10 et 5000 caractères" 
+            });
+        }
+                if (!DOMAINES_AUTORISES.includes(domaine)) {
+            return res.status(400).json({
+                success: false,
+                error: "Domaine invalide"
             });
         }
         
