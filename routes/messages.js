@@ -452,26 +452,25 @@ router.post("/:userId/lu", authMiddleware, async (req, res) => {
 });
 
 // ============================================
-// DELETE /api/messages/:messageId — Supprimer un message
+// DELETE /api/messages/:messageId — Supprimer MON message
 // ============================================
 router.delete("/:messageId", authMiddleware, async (req, res) => {
     try {
         const monId = req.user.id;
-        const messageId = parseInt(req.params.messageId);
+        const messageId = parseInt(req.params.messageId, 10);
 
-        const messageResult = await pool.query(`
-            SELECT * FROM messages 
-            WHERE id = $1 AND (expediteur_id = $2 OR destinataire_id = $2)
-        `, [messageId, monId]);
+        // Seul l'expéditeur peut supprimer son message
+        const result = await pool.query(
+            "DELETE FROM messages WHERE id = $1 AND expediteur_id = $2",
+            [messageId, monId]
+        );
 
-        if (messageResult.rowCount === 0) {
-            return res.status(404).json({ 
-                success: false, 
-                error: "Message introuvable" 
+        if (result.rowCount === 0) {
+            return res.status(404).json({
+                success: false,
+                error: "Message introuvable ou non autorisé"
             });
         }
-
-        await pool.query("DELETE FROM messages WHERE id = $1", [messageId]);
 
         res.json({ success: true, message: "Message supprimé" });
     } catch (erreur) {
