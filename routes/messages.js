@@ -21,6 +21,20 @@ const uploadAudio = multer({
     limits: { fileSize: 5 * 1024 * 1024 }
 });
 // ============================================
+// CRÉATION AUTOMATIQUE DE LA TABLE REACTIONS (une seule fois)
+// ============================================
+pool.query(`
+    CREATE TABLE IF NOT EXISTS reactions (
+        id SERIAL PRIMARY KEY,
+        message_id INTEGER NOT NULL REFERENCES messages(id) ON DELETE CASCADE,
+        user_id INTEGER NOT NULL REFERENCES utilisateurs(id) ON DELETE CASCADE,
+        emoji VARCHAR(10) NOT NULL,
+        date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        UNIQUE (message_id, user_id)
+    )
+`).then(() => console.log("✅ Table reactions prête"))
+  .catch(err => console.error("❌ Erreur table reactions:", err.message));
+// ============================================
 // DELETE /api/messages/conversations/:userId — Masquer une conversation
 // ============================================
 router.delete("/conversations/:userId", authMiddleware, async (req, res) => {
