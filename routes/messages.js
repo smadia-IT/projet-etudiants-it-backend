@@ -238,6 +238,30 @@ router.get("/:userId", authMiddleware, async (req, res) => {
         // On a récupéré du plus récent au plus ancien → on inverse pour l'affichage
         const messages = messagesResult.rows.reverse();
 
+                // Charger les réactions de ces messages en une seule requête
+        if (messages.length > 0) {
+            const ids = messages.map(m => m.id);
+            const reactionsResult = await pool.query(`
+                SELECT r.message_id, r.user_id, r.emoji, u.username
+                FROM reactions r
+                JOIN utilisateurs u ON u.id = r.user_id
+                WHERE r.message_id = ANY($1::int[])
+            `, [ids]);
+
+            const parMessage = {};
+            reactionsResult.rows.forEach(r => {
+                if (!parMessage[r.message_id]) parMessage[r.message_id] = [];
+                parMessage[r.message_id].push({
+                    user_id: r.user_id,
+                    emoji: r.emoji,
+                    username: r.username
+                });
+            });
+            messages.forEach(m => {
+                m.reactions = parMessage[m.id] || [];
+            });
+        }
+
         // Savoir s'il y a plus de messages à charger
         const hasMore = messagesResult.rowCount === limit;
 
@@ -492,4 +516,61 @@ router.delete("/:messageId", authMiddleware, async (req, res) => {
     }
 });
 
+// ============================================
+// POST /api/messages/:messageId/reaction — Ajouter ou changer ma réaction
+// ============================================
+const EMOJIS_AUTORISES = ["👍", "❤️", "😂"];
+
+router.post("/:messageId/reaction", authMiddleware, async (req, res) => {
+    try {
+        const monId = req.user.id;
+        const messageId = parseInt(req.params.messageId, 10);
+        const { emoji } = req.body;
+
+        if (!EMOJIS_AUTORISES.includes(emoji)) {
+            return res.status(400).json({ success: false, error: "Réaction non autorisée" });
+        }
+
+        // La réaction n'est possible que sur un message de la conversation
+        const acces = await pool.query(`
+            SELECT id FROM messages
+            WHERE id = $1 AND (expediteur_id = $2 OR destinataire_id = $2)
+        `, [messageId, monId]);
+
+        if (acces.rowCount === 0) {
+            return res.status(404).json({ success: false, error: "Message introuvable" });
+        }
+
+        // Une seule réaction par personne : on remplace si elle existe déjà
+        await pool.query(`
+            INSERT INTO reactions (message_id, user_id, emoji)
+            VALUES ($1, $2, $3)
+            ON CONFLICT (message_id, user_id)
+            DO UPDATE SET emoji = $3, date = CURRENT_TIMESTAMP
+        `, [messageId, monId, emoji]);
+
+        res.json({ success: true });
+    } catch (erreur) {
+        res.status(500).json({ success: false, error: erreur.message });
+    }
+});
+
+// ============================================
+// DELETE /api/messages/:messageId/reaction — Retirer ma réaction
+// ============================================
+router.delete("/:messageId/reaction", authMiddleware, async (req, res) => {
+    try {
+        const monId = req.user.id;
+        const messageId = parseInt(req.params.messageId, 10);
+
+        await pool.query(
+            "DELETE FROM reactions WHERE message_id = $1 AND user_id = $2",
+            [messageId, monId]
+        );
+
+        res.json({ success: true });
+    } catch (erreur) {
+        res.status(500).json({ success: false, error: erreur.message });
+    }
+});
 module.exports = router;
