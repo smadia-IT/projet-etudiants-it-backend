@@ -152,15 +152,15 @@ router.delete("/:id", authMiddleware, async (req, res) => {
 // FONCTION UTILITAIRE : créer une notification
 // (appelée depuis d'autres routes backend)
 // ============================================
-async function creerNotification(userId, type, titre, message, lien) {
+async function creerNotification(userId, type, titre, message, lien, sansStockage = false) {
     try {
-        // 1. Créer la notification en base
-        await pool.query(`
-            INSERT INTO notifications (user_id, type, titre, message, lien)
-            VALUES ($1, $2, $3, $4, $5)
-        `, [userId, type, titre, message, lien]);
+        if (!sansStockage) {
+            await pool.query(`
+                INSERT INTO notifications (user_id, type, titre, message, lien)
+                VALUES ($1, $2, $3, $4, $5)
+            `, [userId, type, titre, message, lien]);
+        }
 
-        // 2. ✅ Envoyer un push en parallèle (ne bloque pas si erreur)
         try {
             const { envoyerPush } = require("./push");
             await envoyerPush(userId, titre, message, lien || "/");

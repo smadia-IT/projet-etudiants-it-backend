@@ -364,7 +364,8 @@ router.post("/:userId/audio", authMiddleware, uploadAudio.single("audio"), async
                 "message",
                 `🎤 Message vocal de ${req.user.username}`,
                 "Nouveau message vocal",
-                `messages.html?user=${monId}&username=${encodeURIComponent(req.user.username)}`
+                `messages.html?user=${monId}&username=${encodeURIComponent(req.user.username)}`,
+                true
             );
         } catch (e) {
             console.error("Erreur notif vocal:", e.message);
@@ -450,7 +451,8 @@ router.post("/:userId", authMiddleware, async (req, res) => {
                 "message",                        // type
                 `💬 Nouveau message de ${req.user.username}`,  // titre
                 apercu,                           // message
-                `messages.html?user=${monId}&username=${encodeURIComponent(req.user.username)}` // lien
+                `messages.html?user=${monId}&username=${encodeURIComponent(req.user.username)}`,
+                true // lien
             );
         } catch (notifErreur) {
             console.error("Erreur création notif message:", notifErreur.message);
