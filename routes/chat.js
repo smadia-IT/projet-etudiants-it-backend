@@ -18,11 +18,14 @@ const MODELES = [
 // APPEL UNIQUE À GEMINI POUR UN MODÈLE DONNÉ
 // ============================================
 async function appelerModele(modele, message) {
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/${modele}:streamGenerateContent?alt=sse&key=${GEMINI_API_KEY}`;
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/${modele}:streamGenerateContent?alt=sse`;
 
     const reponse = await fetch(url, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+            "Content-Type": "application/json",
+            "x-goog-api-key": GEMINI_API_KEY
+        },
         body: JSON.stringify({
             contents: [{ parts: [{ text: message }] }]
         })
@@ -93,7 +96,7 @@ async function appelerGemini(message) {
 // ============================================
 router.post("/", authMiddleware, async (req, res) => {
     try {
-        const { message } = req.body;
+               const { message } = req.body;
 
         if (!message || message.trim() === "") {
             return res.status(400).json({
@@ -102,10 +105,10 @@ router.post("/", authMiddleware, async (req, res) => {
             });
         }
 
-        if (!GEMINI_API_KEY) {
-            return res.status(500).json({
+        if (message.length > 2000) {
+            return res.status(400).json({
                 success: false,
-                error: "Clé API Gemini manquante"
+                error: "Message trop long (2000 caractères maximum)"
             });
         }
 
