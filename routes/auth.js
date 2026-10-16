@@ -21,6 +21,12 @@ function validerTelephone(tel) {
     return regex.test(tel);
 }
 
+// Accepte "+243 823456789" ou "+243-823456789" et renvoie toujours "+243-823456789"
+function normaliserTelephone(tel) {
+    const propre = (tel || "").trim();
+    const m = propre.match(/^\+(\d{1,4})[\s-]+(\d{6,15})$/);
+    return m ? `+${m[1]}-${m[2]}` : null;
+}
 // ============================================
 // POST /api/auth/register — Inscription
 // ============================================
@@ -57,10 +63,11 @@ router.post("/register", async (req, res) => {
             });
         }
 
-        if (!validerTelephone(telephone)) {
+                const telephoneNormalise = normaliserTelephone(telephone);
+        if (!telephoneNormalise) {
             return res.status(400).json({
                 success: false,
-                error: "Numéro de téléphone invalide. Format attendu : +243-823456789"
+                error: "Numéro de téléphone invalide. Exemple : +243 823456789"
             });
         }
 
