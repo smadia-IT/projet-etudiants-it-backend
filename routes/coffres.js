@@ -216,5 +216,43 @@ router.get("/historique", authMiddleware, async (req, res) => {
         res.status(500).json({ success: false, error: erreur.message });
     }
 });
+// ============================================
+// POST /api/coffres/acheter-vie — Acheter une vie (débit côté serveur)
+// ============================================
+router.post("/acheter-vie", authMiddleware, async (req, res) => {
+    try {
+        const monId = req.user.id;
+        const achats = parseInt(req.body.achats, 10);
+
+        if (!Number.isInteger(achats) || achats < 0 || achats > 50) {
+            return res.status(400).json({ success: false, error: "Requête invalide" });
+        }
+
+        const cout = 10 * (achats + 1);
+
+        // Débit seulement si le solde est suffisant (vérification et débit en une seule requête)
+        const result = await pool.query(`
+            UPDATE utilisateurs
+            SET points = COALESCE(points, 0) - $1
+            WHERE id = $2 AND COALESCE(points, 0) >= $1
+            RETURNING points
+        `, [cout, monId]);
+
+        if (result.rowCount === 0) {
+            return res.status(400).json({
+                success: false,
+                error: `Il te faut ${cout} points pour acheter une vie.`
+            });
+        }
+
+        res.json({
+            success: true,
+            cout,
+            points: result.rows[0].points
+        });
+    } catch (erreur) {
+        res.status(500).json({ success: false, error: erreur.message });
+    }
+});
 
 module.exports = router;
