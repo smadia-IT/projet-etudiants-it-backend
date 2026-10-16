@@ -330,6 +330,70 @@ function authMiddleware(req, res, next) {
         });
     }
 }
+// ============================================
+// DELETE /api/auth/compte — Supprimer mon compte et mes données
+// ============================================
+router.delete("/compte", authMiddleware, async (req, res) => {
+    const client = await pool.connect();
+    try {
+        const { password } = req.body;
+        const monId = req.user.id;
+
+        // Confirmation par mot de passe : évite une suppression accidentelle ou par un tiers
+        const userResult = await client.query("SELECT password FROM utilisateurs WHERE id = $1", [monId]);
+        const user = userResult.rows[0];
+        if (!user) {
+            return res.status(404).json({ success: false, error: "Compte introuvable" });
+        }
+        const valide = await bcrypt.compare(password || "", user.password);
+        if (!valide) {
+            return res.status(401).json({ success: false, error: "Mot de passe incorrect" });
+        }
+
+        await client.query("BEGIN");
+        await client.query("DELETE FROM push_subscriptions WHERE user_id = $1", [monId]);
+        await client.query("DELETE FROM reactions WHERE user_id = $1", [monId]);
+        await client.query("DELETE FROM notifications WHERE user_id = $1", [monId]);
+        await client.query("DELETE FROM conversations_cachees WHERE user_id = $1 OR autre_user_id = $1", [monId]);
+        await client.query("DELETE FROM messages WHERE expediteur_id = $1 OR destinataire_id = $1", [monId]);
+        await client.query("DELETE FROM commentaires WHERE user_id = $1", [monId]);
+        await client.query("DELETE FROM posts WHERE user_id = $1", [monId]);
+        await client.query("DELETE FROM amities WHERE user_id_1 = $1 OR user_id_2 = $1", [monId]);
+        await client.query("DELETE FROM coffres_quotidiens WHERE user_id = $1", [monId]);
+        await client.query("DELETE FROM utilisateurs WHERE id = $1", [monId]);
+        await client.query("COMMIT");
+
+        res.json({ success: true, message: "Compte supprimé" });
+    } catch (erreur) {
+        await client.query("ROLLBACK").catch(() => {});
+        res.status(500).json({ success: false, error: erreur.message });
+    } finally {
+        client.release();
+    }
+});
+// ============================================
+// POST /api/auth/signaler — Signaler un contenu
+// ============================================
+const TYPES_SIGNALABLES = ["message", "sujet", "commentaire", "profil"];
+
+router.post("/signaler", authMiddleware, async (req, res) => {
+    try {
+        const { type, cible_id, motif } = req.body;
+
+        if (!TYPES_SIGNALABLES.includes(type) || !Number.isInteger(parseInt(cible_id, 10))) {
+            return res.status(400).json({ success: false, error: "Signalement invalide" });
+        }
+
+        await pool.query(`
+            INSERT INTO signalements (signale_par, type, cible_id, motif)
+            VALUES ($1, $2, $3, $4)
+        `, [req.user.id, type, parseInt(cible_id, 10), (motif || "").slice(0, 255)]);
+
+        res.status(201).json({ success: true, message: "Merci, le contenu a été signalé." });
+    } catch (erreur) {
+        res.status(500).json({ success: false, error: erreur.message });
+    }
+});
 
 module.exports = {
     router,

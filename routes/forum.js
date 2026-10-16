@@ -15,6 +15,18 @@ const DOMAINES_AUTORISES = [
     "Autre"
 ];
 
+const { pool: poolSignalements } = require("../db/database");
+poolSignalements.query(`
+    CREATE TABLE IF NOT EXISTS signalements (
+        id SERIAL PRIMARY KEY,
+        signale_par INTEGER NOT NULL REFERENCES utilisateurs(id) ON DELETE CASCADE,
+        type VARCHAR(20) NOT NULL,
+        cible_id INTEGER NOT NULL,
+        motif VARCHAR(255),
+        date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        traite BOOLEAN DEFAULT FALSE
+    )
+`).catch(err => console.error("Erreur table signalements:", err.message));
 // ============================================
 // GET /api/forum/posts — Liste des sujets
 // ============================================
