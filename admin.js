@@ -3,27 +3,23 @@
 // ============================================
 
 require("dotenv").config();
-const { Pool } = require("pg");
+const { Client } = require("pg");
 const readline = require("readline");
 const fs = require("fs");
 const path = require("path");
 
 // ============================================
 // CONNEXION À LA BASE
+// Une connexion neuve par requête : évite les connexions coupées
 // ============================================
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: { rejectUnauthorized: false },
-    max: 3,
-    idleTimeoutMillis: 10000,
-       connectionTimeoutMillis: 45000,
-    keepAlive: true
-});
-
-// Une connexion coupée par le serveur ne doit pas faire planter l'outil
-pool.on("error", function (erreur) {
-    console.log(`⚠️  Connexion perdue (${erreur.message}), elle sera recréée.`);
-});
+function nouvelleConnexion() {
+    return new Client({
+        connectionString: process.env.DATABASE_URL,
+        ssl: { rejectUnauthorized: false },
+        connectionTimeoutMillis: 45000,
+        keepAlive: true
+    });
+}
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -67,16 +63,25 @@ async function creerBackup(nomFichier) {
     if (!fs.existsSync(backupDir)) fs.mkdirSync(backupDir);
 
     const tables = ["utilisateurs", "messages", "amities", "posts", "commentaires",
-        "mots", "notifications", "conversations_cachees"];
+        "mots", "notifications", "conversations_cachees", "reactions"];
     const backup = { date: new Date().toISOString(), tables: {} };
 
-    for (const t of tables) {
-        try {
-            const r = await pool.query(`SELECT * FROM ${t}`);
-            backup.tables[t] = r.rows;
-        } catch (e) {
-            backup.tables[t] = { error: e.message };
+    const client = nouvelleConnexion();
+    try {
+        await client.connect();
+        for (const t of tables) {
+            try {
+                const r = await client.query(`SELECT * FROM ${t}`);
+                backup.tables[t] = r.rows;
+            } catch (e) {
+                backup.tables[t] = { error: e.message };
+            }
         }
+    } catch (e) {
+        console.log(`❌ Impossible de créer le backup : ${e.message}`);
+        return null;
+    } finally {
+        await client.end().catch(() => {});
     }
 
     const fichier = path.join(backupDir, nomFichier);
@@ -108,23 +113,28 @@ function afficherResultat(result) {
 }
 
 // ============================================
-// EXÉCUTION SQL (avec relance en cas de coupure)
+// EXÉCUTION SQL (relance en cas de coupure)
 // ============================================
 // parametres : valeurs passées séparément (protège contre l'injection SQL)
 async function executerSQL(sql, parametres = [], silencieux = false) {
-    for (let essai = 1; essai <= 2; essai++) {
+    for (let essai = 1; essai <= 3; essai++) {
+        const client = nouvelleConnexion();
         try {
-            const result = await pool.query(sql, parametres);
+            await client.connect();
+            const result = await client.query(sql, parametres);
             if (!silencieux) afficherResultat(result);
             return result;
         } catch (erreur) {
-            const coupure = /ECONNRESET|Connection terminated|timeout/i.test(erreur.message);
-            if (coupure && essai === 1) {
-                console.log("🔄 Connexion coupée, nouvelle tentative...");
+            const coupure = /ECONNRESET|Connection terminated|timeout|connect/i.test(erreur.message);
+            if (coupure && essai < 3) {
+                console.log(`🔄 Connexion coupée, nouvel essai (${essai + 1}/3)...`);
+                await new Promise(r => setTimeout(r, 2000));
                 continue;
             }
             console.log(`\n❌ ERREUR SQL : ${erreur.message}\n`);
             return null;
+        } finally {
+            await client.end().catch(() => {});
         }
     }
     return null;
@@ -428,7 +438,7 @@ async function menuDatabase() {
             "mots", "notifications", "conversations_cachees", "reactions"];
         console.log("\n📊 Comptage en cours...\n");
         for (const t of tables) {
-            // Le nom vient de la liste ci-dessus, pas de l'utilisateur
+            // Le nom vient de la liste ci-dessus, jamais de l'utilisateur
             const r = await executerSQL(`SELECT COUNT(*) AS nb FROM ${t}`, [], true);
             console.log(`${t.padEnd(25)} : ${r ? r.rows[0].nb : "❌"}`);
         }
@@ -554,7 +564,6 @@ async function main() {
         case "0":
             console.log("\n👋 Bye !\n");
             rl.close();
-            await pool.end();
             process.exit(0);
         default:
             console.log("❌ Choix invalide");
@@ -570,6 +579,5 @@ async function main() {
 main().catch(err => {
     console.error("❌ Erreur fatale :", err);
     rl.close();
-    pool.end();
     process.exit(1);
 });
