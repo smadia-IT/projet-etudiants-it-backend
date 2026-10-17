@@ -1,5 +1,5 @@
 // ============================================
-// SCRIPT ADMIN - Console complète Étudiants IT
+// SCRIPT ADMIN - Console Étudiants IT
 // ============================================
 
 require("dotenv").config();
@@ -8,9 +8,21 @@ const readline = require("readline");
 const fs = require("fs");
 const path = require("path");
 
+// ============================================
+// CONNEXION À LA BASE
+// ============================================
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
-    ssl: { rejectUnauthorized: false }
+    ssl: { rejectUnauthorized: false },
+    max: 3,
+    idleTimeoutMillis: 10000,
+    connectionTimeoutMillis: 15000,
+    keepAlive: true
+});
+
+// Une connexion coupée par le serveur ne doit pas faire planter l'outil
+pool.on("error", function (erreur) {
+    console.log(`⚠️  Connexion perdue (${erreur.message}), elle sera recréée.`);
 });
 
 const rl = readline.createInterface({
@@ -31,21 +43,20 @@ async function pause() {
 
 function formatDate(d) {
     if (!d) return "—";
-    const date = new Date(d);
-    return date.toLocaleString("fr-FR", {
+    return new Date(d).toLocaleString("fr-FR", {
         day: "2-digit", month: "2-digit", year: "numeric",
         hour: "2-digit", minute: "2-digit"
     });
 }
 
 // ============================================
-// SÉCURITÉ : blocage des opérations destructrices
+// SÉCURITÉ : opérations destructrices
 // ============================================
 function estDangereux(sql) {
     const s = sql.trim().toUpperCase();
-    return s.startsWith("DROP") || 
-           s.startsWith("TRUNCATE") ||
-           (s.startsWith("DELETE") && !s.includes("WHERE"));
+    return s.startsWith("DROP") ||
+        s.startsWith("TRUNCATE") ||
+        (s.startsWith("DELETE") && !s.includes("WHERE"));
 }
 
 // ============================================
@@ -54,10 +65,11 @@ function estDangereux(sql) {
 async function creerBackup(nomFichier) {
     const backupDir = path.join(__dirname, "backups");
     if (!fs.existsSync(backupDir)) fs.mkdirSync(backupDir);
-    
-    const tables = ["utilisateurs", "messages", "amities", "posts", "commentaires", "mots", "notifications", "conversations_cachees"];
+
+    const tables = ["utilisateurs", "messages", "amities", "posts", "commentaires",
+        "mots", "notifications", "conversations_cachees"];
     const backup = { date: new Date().toISOString(), tables: {} };
-    
+
     for (const t of tables) {
         try {
             const r = await pool.query(`SELECT * FROM ${t}`);
@@ -66,7 +78,7 @@ async function creerBackup(nomFichier) {
             backup.tables[t] = { error: e.message };
         }
     }
-    
+
     const fichier = path.join(backupDir, nomFichier);
     fs.writeFileSync(fichier, JSON.stringify(backup, null, 2));
     console.log(`💾 Backup créé : ${fichier}`);
@@ -74,11 +86,10 @@ async function creerBackup(nomFichier) {
 }
 
 // ============================================
-// AFFICHER LE RÉSULTAT D'UNE REQUÊTE
+// AFFICHAGE DU RÉSULTAT
 // ============================================
 function afficherResultat(result) {
     if (result.rows && result.rows.length > 0) {
-        // Formater les dates
         const rows = result.rows.map(r => {
             const obj = { ...r };
             for (const k in obj) {
@@ -92,22 +103,31 @@ function afficherResultat(result) {
     } else if (result.rowCount !== undefined) {
         console.log(`\n✅ ${result.rowCount} ligne(s) affectée(s)\n`);
     } else {
-        console.log("\n✅ Requête exécutée (aucun résultat)\n");
+        console.log("\n✅ Requête exécutée\n");
     }
 }
 
 // ============================================
-// EXÉCUTER UNE REQUÊTE SQL
+// EXÉCUTION SQL (avec relance en cas de coupure)
 // ============================================
-async function executerSQL(sql, silencieux = false) {
-    try {
-        const result = await pool.query(sql);
-        if (!silencieux) afficherResultat(result);
-        return result;
-    } catch (erreur) {
-        console.log(`\n❌ ERREUR SQL : ${erreur.message}\n`);
-        return null;
+// parametres : valeurs passées séparément (protège contre l'injection SQL)
+async function executerSQL(sql, parametres = [], silencieux = false) {
+    for (let essai = 1; essai <= 2; essai++) {
+        try {
+            const result = await pool.query(sql, parametres);
+            if (!silencieux) afficherResultat(result);
+            return result;
+        } catch (erreur) {
+            const coupure = /ECONNRESET|Connection terminated|timeout/i.test(erreur.message);
+            if (coupure && essai === 1) {
+                console.log("🔄 Connexion coupée, nouvelle tentative...");
+                continue;
+            }
+            console.log(`\n❌ ERREUR SQL : ${erreur.message}\n`);
+            return null;
+        }
     }
+    return null;
 }
 
 // ============================================
@@ -123,51 +143,58 @@ async function menuUtilisateurs() {
     console.log("6. Voir les utilisateurs inactifs (24h+)");
     console.log("7. Voir les utilisateurs connectés récemment");
     console.log("0. Retour\n");
-    
+
     const choix = await demander("Ton choix : ");
-    
+
     if (choix === "1") {
         await executerSQL(`
             SELECT id, username, email, created_at, derniere_activite
-            FROM utilisateurs 
+            FROM utilisateurs
             ORDER BY id
         `);
+
     } else if (choix === "2") {
         const username = await demander("Username : ");
-        const r = await executerSQL(`
-            SELECT 
+        await executerSQL(`
+            SELECT
                 u.id, u.username, u.email, u.created_at, u.derniere_activite,
-                (SELECT COUNT(*) FROM messages WHERE expediteur_id = u.id OR destinataire_id = u.id) as total_messages,
-                (SELECT COUNT(*) FROM amities WHERE (user_id_1 = u.id OR user_id_2 = u.id) AND statut = 'acceptee') as total_amis,
-                (SELECT COUNT(*) FROM posts WHERE user_id = u.id) as total_posts,
-                (SELECT COUNT(*) FROM commentaires WHERE user_id = u.id) as total_commentaires,
-                (SELECT COUNT(*) FROM notifications WHERE user_id = u.id AND lu = 0) as notifs_non_lues
+                (SELECT COUNT(*) FROM messages WHERE expediteur_id = u.id OR destinataire_id = u.id) AS total_messages,
+                (SELECT COUNT(*) FROM amities WHERE (user_id_1 = u.id OR user_id_2 = u.id) AND statut = 'acceptee') AS total_amis,
+                (SELECT COUNT(*) FROM posts WHERE user_id = u.id) AS total_posts,
+                (SELECT COUNT(*) FROM commentaires WHERE user_id = u.id) AS total_commentaires,
+                (SELECT COUNT(*) FROM notifications WHERE user_id = u.id AND lu = 0) AS notifs_non_lues
             FROM utilisateurs u
             WHERE u.username = $1
-        `, false);
-        // ⚠️ Si tu veux passer un paramètre, modifie executerSQL (voir note en bas)
+        `, [username]);
+
     } else if (choix === "3") {
         const username = await demander("Username : ");
         const email = await demander("Email : ");
         const password = await demander("Mot de passe (hash bcrypt) : ");
-        await executerSQL(
-            `INSERT INTO utilisateurs (username, email, password) VALUES ('${username}', '${email}', '${password}') RETURNING id, username, email`
-        );
+        await executerSQL(`
+            INSERT INTO utilisateurs (username, email, password)
+            VALUES ($1, $2, $3)
+            RETURNING id, username, email
+        `, [username, email, password]);
+
     } else if (choix === "4") {
         const username = await demander("Username : ");
         const hash = await demander("Nouveau hash bcrypt : ");
-        await executerSQL(
-            `UPDATE utilisateurs SET password = '${hash}' WHERE username = '${username}' RETURNING id, username`
-        );
+        await executerSQL(`
+            UPDATE utilisateurs SET password = $1 WHERE username = $2
+            RETURNING id, username
+        `, [hash, username]);
+
     } else if (choix === "5") {
         const username = await demander("Username à supprimer : ");
         const confirm = await demander(`⚠️  Supprimer "${username}" ET TOUTES ses données ? (oui/non) : `);
         if (confirm.toLowerCase() === "oui") {
             await creerBackup(`backup_avant_suppression_${username}_${Date.now()}.json`);
-            await executerSQL(`DELETE FROM utilisateurs WHERE username = '${username}' RETURNING id, username`);
+            await executerSQL(`DELETE FROM utilisateurs WHERE username = $1 RETURNING id, username`, [username]);
         } else {
             console.log("❌ Annulé");
         }
+
     } else if (choix === "6") {
         await executerSQL(`
             SELECT id, username, derniere_activite, dernier_rappel_envoye
@@ -175,6 +202,7 @@ async function menuUtilisateurs() {
             WHERE derniere_activite < NOW() - INTERVAL '24 hours'
             ORDER BY derniere_activite ASC
         `);
+
     } else if (choix === "7") {
         await executerSQL(`
             SELECT id, username, derniere_activite
@@ -182,10 +210,11 @@ async function menuUtilisateurs() {
             WHERE derniere_activite > NOW() - INTERVAL '1 hour'
             ORDER BY derniere_activite DESC
         `);
+
     } else if (choix === "0") {
         return;
     }
-    
+
     await pause();
     await menuUtilisateurs();
 }
@@ -202,19 +231,20 @@ async function menuNotifications() {
     console.log("5. Supprimer les notifs d'un user");
     console.log("6. Voir les stats par type");
     console.log("0. Retour\n");
-    
+
     const choix = await demander("Ton choix : ");
-    
+
     if (choix === "1") {
         const username = await demander("Username : ");
         await executerSQL(`
             SELECT n.id, n.type, n.titre, n.message, n.lu, n.date
             FROM notifications n
             JOIN utilisateurs u ON u.id = n.user_id
-            WHERE u.username = '${username}'
+            WHERE u.username = $1
             ORDER BY n.date DESC
             LIMIT 50
-        `);
+        `, [username]);
+
     } else if (choix === "2") {
         await executerSQL(`
             SELECT n.id, u.username, n.type, n.titre, n.date
@@ -224,6 +254,7 @@ async function menuNotifications() {
             ORDER BY n.date DESC
             LIMIT 50
         `);
+
     } else if (choix === "3") {
         const username = await demander("Username destinataire : ");
         const type = await demander("Type (message/ami/forum/rappel/badge) : ");
@@ -232,39 +263,43 @@ async function menuNotifications() {
         const lien = await demander("Lien (ex: index.html, ou vide) : ");
         await executerSQL(`
             INSERT INTO notifications (user_id, type, titre, message, lien)
-            SELECT id, '${type}', '${titre}', '${message}', ${lien ? `'${lien}'` : "NULL"}
-            FROM utilisateurs WHERE username = '${username}'
+            SELECT id, $2, $3, $4, $5
+            FROM utilisateurs WHERE username = $1
             RETURNING id, user_id, titre
-        `);
+        `, [username, type, titre, message, lien || null]);
+
     } else if (choix === "4") {
         const username = await demander("Username : ");
         await executerSQL(`
             UPDATE notifications SET lu = 1
-            WHERE user_id = (SELECT id FROM utilisateurs WHERE username = '${username}')
+            WHERE user_id = (SELECT id FROM utilisateurs WHERE username = $1)
               AND lu = 0
-        `);
+        `, [username]);
+
     } else if (choix === "5") {
         const username = await demander("Username : ");
         const confirm = await demander(`⚠️  Supprimer toutes les notifs de "${username}" ? (oui/non) : `);
         if (confirm.toLowerCase() === "oui") {
             await executerSQL(`
                 DELETE FROM notifications
-                WHERE user_id = (SELECT id FROM utilisateurs WHERE username = '${username}')
-            `);
+                WHERE user_id = (SELECT id FROM utilisateurs WHERE username = $1)
+            `, [username]);
         } else {
             console.log("❌ Annulé");
         }
+
     } else if (choix === "6") {
         await executerSQL(`
-            SELECT type, COUNT(*) as total, SUM(lu) as lues, COUNT(*) - SUM(lu) as non_lues
+            SELECT type, COUNT(*) AS total, SUM(lu) AS lues, COUNT(*) - SUM(lu) AS non_lues
             FROM notifications
             GROUP BY type
             ORDER BY total DESC
         `);
+
     } else if (choix === "0") {
         return;
     }
-    
+
     await pause();
     await menuNotifications();
 }
@@ -280,47 +315,51 @@ async function menuMessages() {
     console.log("4. Compter les messages non-lus d'un user");
     console.log("5. Supprimer les messages d'un user");
     console.log("0. Retour\n");
-    
+
     const choix = await demander("Ton choix : ");
-    
+
     if (choix === "1") {
         await executerSQL(`
-            SELECT m.id, ue.username as expediteur, ud.username as destinataire,
-                   LEFT(m.contenu, 50) as apercu, m.lu, m.date
+            SELECT m.id, ue.username AS expediteur, ud.username AS destinataire,
+                   LEFT(m.contenu, 50) AS apercu, m.lu, m.date
             FROM messages m
             JOIN utilisateurs ue ON ue.id = m.expediteur_id
             JOIN utilisateurs ud ON ud.id = m.destinataire_id
             ORDER BY m.date DESC
             LIMIT 30
         `);
+
     } else if (choix === "2") {
         const u1 = await demander("Username 1 : ");
         const u2 = await demander("Username 2 : ");
         await executerSQL(`
-            SELECT m.id, ue.username as expediteur, m.contenu, m.lu, m.date
+            SELECT m.id, ue.username AS expediteur, m.contenu, m.lu, m.date
             FROM messages m
             JOIN utilisateurs ue ON ue.id = m.expediteur_id
             JOIN utilisateurs ud ON ud.id = m.destinataire_id
-            WHERE (ue.username = '${u1}' AND ud.username = '${u2}')
-               OR (ue.username = '${u2}' AND ud.username = '${u1}')
+            WHERE (ue.username = $1 AND ud.username = $2)
+               OR (ue.username = $2 AND ud.username = $1)
             ORDER BY m.date ASC
-        `);
+        `, [u1, u2]);
+
     } else if (choix === "3") {
         await executerSQL(`
-            SELECT cc.id, u.username, ua.username as autre, cc.date_masquage
+            SELECT cc.id, u.username, ua.username AS autre, cc.date_masquage
             FROM conversations_cachees cc
             JOIN utilisateurs u ON u.id = cc.user_id
             JOIN utilisateurs ua ON ua.id = cc.autre_user_id
             ORDER BY cc.date_masquage DESC
         `);
+
     } else if (choix === "4") {
         const username = await demander("Username : ");
         await executerSQL(`
-            SELECT COUNT(*) as messages_non_lus
+            SELECT COUNT(*) AS messages_non_lus
             FROM messages
-            WHERE destinataire_id = (SELECT id FROM utilisateurs WHERE username = '${username}')
+            WHERE destinataire_id = (SELECT id FROM utilisateurs WHERE username = $1)
               AND lu = 0
-        `);
+        `, [username]);
+
     } else if (choix === "5") {
         const username = await demander("Username : ");
         const confirm = await demander(`⚠️  Supprimer TOUS les messages de "${username}" ? (oui/non) : `);
@@ -328,16 +367,17 @@ async function menuMessages() {
             await creerBackup(`backup_messages_${username}_${Date.now()}.json`);
             await executerSQL(`
                 DELETE FROM messages
-                WHERE expediteur_id = (SELECT id FROM utilisateurs WHERE username = '${username}')
-                   OR destinataire_id = (SELECT id FROM utilisateurs WHERE username = '${username}')
-            `);
+                WHERE expediteur_id = (SELECT id FROM utilisateurs WHERE username = $1)
+                   OR destinataire_id = (SELECT id FROM utilisateurs WHERE username = $1)
+            `, [username]);
         } else {
             console.log("❌ Annulé");
         }
+
     } else if (choix === "0") {
         return;
     }
-    
+
     await pause();
     await menuMessages();
 }
@@ -354,47 +394,53 @@ async function menuDatabase() {
     console.log("5. Créer un backup complet");
     console.log("6. Requête SQL personnalisée");
     console.log("0. Retour\n");
-    
+
     const choix = await demander("Ton choix : ");
-    
+
     if (choix === "1") {
         await executerSQL(`
-            SELECT table_name 
-            FROM information_schema.tables 
-            WHERE table_schema = 'public' 
+            SELECT table_name
+            FROM information_schema.tables
+            WHERE table_schema = 'public'
             ORDER BY table_name
         `);
+
     } else if (choix === "2") {
         const table = await demander("Nom de la table : ");
         await executerSQL(`
             SELECT column_name, data_type, is_nullable, column_default
             FROM information_schema.columns
-            WHERE table_name = '${table}'
+            WHERE table_name = $1
             ORDER BY ordinal_position
-        `);
+        `, [table]);
+
     } else if (choix === "3") {
         await executerSQL(`
-            SELECT 
-                relname as table_name,
-                pg_size_pretty(pg_total_relation_size(relid)) as taille
+            SELECT
+                relname AS table_name,
+                pg_size_pretty(pg_total_relation_size(relid)) AS taille
             FROM pg_catalog.pg_statio_user_tables
             ORDER BY pg_total_relation_size(relid) DESC
         `);
+
     } else if (choix === "4") {
-        const tables = ["utilisateurs", "messages", "amities", "posts", "commentaires", "mots", "notifications", "conversations_cachees"];
+        const tables = ["utilisateurs", "messages", "amities", "posts", "commentaires",
+            "mots", "notifications", "conversations_cachees", "reactions"];
         console.log("\n📊 Comptage en cours...\n");
         for (const t of tables) {
-            const r = await executerSQL(`SELECT COUNT(*) as nb FROM ${t}`, true);
+            // Le nom vient de la liste ci-dessus, pas de l'utilisateur
+            const r = await executerSQL(`SELECT COUNT(*) AS nb FROM ${t}`, [], true);
             console.log(`${t.padEnd(25)} : ${r ? r.rows[0].nb : "❌"}`);
         }
         console.log("");
+
     } else if (choix === "5") {
         await creerBackup(`backup_complet_${Date.now()}.json`);
+
     } else if (choix === "6") {
-        console.log("\n💡 Tape ta requête SQL (une seule ligne) :");
-        console.log("   Pour DROP/DELETE sans WHERE, il faut taper 'FORCE' après.\n");
+        console.log("\n💡 Tape ta requête SQL (une seule ligne).\n");
         const sql = await demander("SQL > ");
-        
+
         if (estDangereux(sql)) {
             const confirm = await demander("⚠️  Requête DESTRUCTRICE détectée. Confirmer (oui/non) : ");
             if (confirm.toLowerCase() !== "oui") {
@@ -404,12 +450,13 @@ async function menuDatabase() {
             }
             await creerBackup(`backup_avant_requete_dangereuse_${Date.now()}.json`);
         }
-        
+
         await executerSQL(sql);
+
     } else if (choix === "0") {
         return;
     }
-    
+
     await pause();
     await menuDatabase();
 }
@@ -424,15 +471,15 @@ async function menuCron() {
     console.log("3. Remettre un utilisateur actif");
     console.log("4. Voir les rappels déjà envoyés");
     console.log("0. Retour\n");
-    
+
     const choix = await demander("Ton choix : ");
-    
+
     if (choix === "1") {
         await executerSQL(`
             SELECT u.id, u.username, u.derniere_activite, u.dernier_rappel_envoye
             FROM utilisateurs u
             WHERE u.derniere_activite < NOW() - INTERVAL '24 hours'
-              AND (u.dernier_rappel_envoye IS NULL 
+              AND (u.dernier_rappel_envoye IS NULL
                    OR u.dernier_rappel_envoye < NOW() - INTERVAL '24 hours')
               AND (
                   EXISTS (
@@ -446,23 +493,26 @@ async function menuCron() {
                   )
               )
         `);
+
     } else if (choix === "2") {
         const username = await demander("Username : ");
         await executerSQL(`
             UPDATE utilisateurs
             SET derniere_activite = NOW() - INTERVAL '25 hours',
                 dernier_rappel_envoye = NULL
-            WHERE username = '${username}'
+            WHERE username = $1
             RETURNING id, username, derniere_activite
-        `);
+        `, [username]);
+
     } else if (choix === "3") {
         const username = await demander("Username : ");
         await executerSQL(`
             UPDATE utilisateurs
             SET derniere_activite = NOW()
-            WHERE username = '${username}'
+            WHERE username = $1
             RETURNING id, username, derniere_activite
-        `);
+        `, [username]);
+
     } else if (choix === "4") {
         await executerSQL(`
             SELECT id, username, dernier_rappel_envoye
@@ -470,10 +520,11 @@ async function menuCron() {
             WHERE dernier_rappel_envoye IS NOT NULL
             ORDER BY dernier_rappel_envoye DESC
         `);
+
     } else if (choix === "0") {
         return;
     }
-    
+
     await pause();
     await menuCron();
 }
@@ -490,20 +541,16 @@ async function main() {
     console.log("3. 💬 Messages");
     console.log("4. 🗄️  Base de données");
     console.log("5. ⏰ Cron & Rappels");
-    console.log("6. 📝 Forum");
-    console.log("7. 🎲 Quiz & Badges");
     console.log("0. 🚪 Quitter\n");
-    
+
     const choix = await demander("Ton choix : ");
-    
+
     switch (choix) {
         case "1": await menuUtilisateurs(); break;
         case "2": await menuNotifications(); break;
         case "3": await menuMessages(); break;
         case "4": await menuDatabase(); break;
         case "5": await menuCron(); break;
-        case "6": console.log("À venir..."); await pause(); break;
-        case "7": console.log("À venir..."); await pause(); break;
         case "0":
             console.log("\n👋 Bye !\n");
             rl.close();
@@ -513,7 +560,7 @@ async function main() {
             console.log("❌ Choix invalide");
             await pause();
     }
-    
+
     await main();
 }
 
